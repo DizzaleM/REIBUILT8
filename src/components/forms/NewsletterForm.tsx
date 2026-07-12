@@ -20,7 +20,7 @@ export function NewsletterForm({ compact = false }: { compact?: boolean }) {
 
   if (success) {
     return (
-      <div className="rounded-xl border border-r8-blue/40 bg-r8-blue/10 p-6 text-center">
+      <div className="rounded-xl border border-white/35 bg-white/5 p-6 text-center">
         <p className="font-display text-2xl uppercase text-r8-white">You&apos;re in.</p>
         <p className="mt-2 text-sm text-r8-secondary">Training tips and program updates are coming soon.</p>
       </div>

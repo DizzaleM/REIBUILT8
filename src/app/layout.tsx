@@ -19,28 +19,30 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://reibuilt8.vercel.app"),
+  metadataBase: new URL("https://dieselway.vercel.app"),
   title: {
-    default: "REIBUILT 8 | Online Fitness Training with Rei",
-    template: "%s | REIBUILT 8",
+    default: "The Diesel Way | Strength Through Discipline",
+    template: "%s | The Diesel Way",
   },
   description:
-    "Train with Rei through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
+    "Train with Dem Diesel through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
   openGraph: {
-    title: "REIBUILT 8 | Online Fitness Training with Rei",
+    title: "The Diesel Way | Strength Through Discipline",
     description:
-      "Train with Rei through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
+      "Train with Dem Diesel through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
     type: "website",
-    siteName: "REIBUILT 8",
+    siteName: "The Diesel Way",
   },
   twitter: {
     card: "summary_large_image",
-    title: "REIBUILT 8 | Online Fitness Training with Rei",
+    title: "The Diesel Way | Strength Through Discipline",
     description:
-      "Train with Rei through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
+      "Train with Dem Diesel through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
   },
   icons: {
-    icon: "/brand/reibuilt8-r8-mark.svg",
+    icon: [{ url: "/brand/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.ico",
+    apple: "/brand/favicon.png",
   },
 };
 
@@ -48,9 +50,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "REIBUILT 8",
-    url: "https://reibuilt8.vercel.app",
-    description: "Online fitness training, programs, live classes, and coaching with Rei.",
+    name: "The Diesel Way",
+    url: "https://dieselway.vercel.app",
+    description: "Online fitness training, programs, live classes, and coaching with Dem Diesel.",
   };
 
   return (

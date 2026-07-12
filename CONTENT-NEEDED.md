@@ -1,6 +1,6 @@
 # Content Needed Before Launch
 
-Collect and verify the following from Rei / the business before replacing placeholders.
+Collect and verify the following from Dem Diesel / the business before replacing placeholders.
 
 ## Brand & Media
 

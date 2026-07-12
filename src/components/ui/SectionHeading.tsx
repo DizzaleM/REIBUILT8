@@ -16,7 +16,7 @@ export function SectionHeading({
   return (
     <div className={cn(align === "center" && "text-center", className)}>
       {eyebrow ? (
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-r8-blue-light">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-r8-secondary">
           {eyebrow}
         </p>
       ) : null}

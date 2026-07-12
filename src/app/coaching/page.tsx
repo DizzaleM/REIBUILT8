@@ -13,7 +13,7 @@ import { testimonials } from "@/data/testimonials";
 const process = [
   "Apply",
   "Complete assessment",
-  "Meet with Rei",
+  "Meet with Dem Diesel",
   "Receive your plan",
   "Track progress",
   "Adjust and improve",
@@ -31,7 +31,7 @@ export default function CoachingPage() {
     <div>
       <PageHero
         eyebrow="Personal Coaching"
-        title="Coaching Built Around You"
+        title="Coaching With Dem Diesel"
         description="Customized training strategy, direct accountability, and a plan designed around your goals, schedule, and experience level."
       />
 
@@ -53,11 +53,11 @@ export default function CoachingPage() {
             </div>
           </div>
           <div className="relative mx-auto aspect-[3/4] max-w-md">
-            <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-r8-blue/20 blur-3xl" />
+            <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
             <ImagePlaceholder
-              src="/images/rei/coaching-rei.png"
-              alt="Coaching with Rei"
-              label="Add Rei Photo"
+              src="/images/coach/coaching-dem-diesel.png"
+              alt="Coaching with Dem Diesel"
+              label="Add Dem Diesel Photo"
               fill
               cutout
               objectFit="contain"
@@ -89,7 +89,7 @@ export default function CoachingPage() {
           <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {process.map((step, index) => (
               <li key={step} className="rounded-xl border border-r8-border bg-r8-charcoal p-5">
-                <p className="text-xs uppercase tracking-[0.18em] text-r8-blue-light">Step {index + 1}</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-r8-secondary">Step {index + 1}</p>
                 <p className="mt-2 font-display text-2xl uppercase text-r8-white">{step}</p>
               </li>
             ))}
@@ -108,10 +108,10 @@ export default function CoachingPage() {
         <div id="apply" className="mt-20 scroll-mt-28 rounded-2xl border border-r8-border bg-r8-elevated p-6 sm:p-8">
           <SectionHeading title="Coaching Application" description="Submit the form below. Nothing is stored in this mockup." />
           {submitted ? (
-            <div className="mt-8 rounded-xl border border-r8-blue/40 bg-r8-blue/10 p-6">
+            <div className="mt-8 rounded-xl border border-white/35 bg-white/5 p-6">
               <p className="font-display text-2xl uppercase text-r8-white">Application received</p>
               <p className="mt-2 text-sm text-r8-secondary">
-                Thanks for applying. In the live system, Rei&apos;s team would review your details and follow up by email.
+                Thanks for applying. In the live system, Dem Diesel&apos;s team would review your details and follow up by email.
               </p>
               <Button href="/assessment" className="mt-6">
                 Continue with Assessment

@@ -25,7 +25,7 @@ export async function getCoachTake(input: CoachMessageInput): Promise<string[]> 
   return [
     `${name}, here's the straight talk: you don't need more random motivation — you need a plan you can repeat. Your snapshot points to ${result.tier.toLowerCase()} with a focus on ${result.primaryGoal.toLowerCase()}.`,
     `Lean into ${result.strengths.join(" and ").toLowerCase()}. That's your current edge. Then attack ${result.opportunities.join(" and ").toLowerCase()} with boring consistency. Boring wins.`,
-    `If you want the fastest path, start the recommended program, join ${result.recommendedMembershipSlug} membership, and keep me in the loop through coaching checkpoints. Built different starts with doing the unsexy work on schedule.`,
+    `If you want the fastest path, start the recommended program, join ${result.recommendedMembershipSlug} membership, and keep me in the loop through coaching checkpoints. Strength through discipline starts with doing the unsexy work on schedule.`,
   ];
 }
 

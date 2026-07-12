@@ -4,11 +4,11 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 const variants = {
   primary:
-    "bg-r8-blue text-r8-white hover:bg-r8-blue-light shadow-[0_0_0_1px_rgba(8,107,255,0.35)]",
+    "bg-white !text-black hover:bg-[#E5E5E5] hover:!text-black shadow-[0_1px_0_rgba(255,255,255,0.12),0_8px_24px_rgba(0,0,0,0.35)]",
   secondary:
-    "bg-transparent text-r8-white border border-white/35 hover:border-r8-blue-light hover:text-r8-blue-light",
-  ghost: "bg-transparent text-r8-secondary hover:text-r8-white",
-  dark: "bg-r8-elevated text-r8-white border border-r8-border hover:border-r8-blue",
+    "bg-transparent !text-white border border-white/80 hover:bg-white hover:!text-black",
+  ghost: "bg-transparent text-[#C7C7C7] hover:text-white",
+  dark: "bg-[#222222] text-white border border-[#303030] hover:border-white/50 hover:text-white",
 };
 
 const sizes = {

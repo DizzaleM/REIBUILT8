@@ -3,7 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Shipping Policy",
-  description: "REIBUILT 8 shipping policy placeholder.",
+  description: "DIESEL WAY shipping policy placeholder.",
 };
 
 export default function ShippingPolicyPage() {

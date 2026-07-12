@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { LiveClassCard } from "@/components/cards/ContentCards";
 import { useUi } from "@/components/providers/UiProvider";
 import { getFeaturedClass, liveClasses } from "@/data/classes";
@@ -34,18 +33,20 @@ export default function LivePage() {
     <div>
       <PageHero
         title="Live Classes"
-        description="Train live with Rei. Reserve your spot, show up ready, and use replays when life gets in the way."
+        description="Train live with Dem Diesel. Reserve your spot, show up ready, and use replays when life gets in the way."
       />
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 overflow-hidden rounded-2xl border border-r8-border bg-r8-elevated lg:grid-cols-2">
-          <div className="relative min-h-72">
-            <ImagePlaceholder src={featured.image} alt={featured.title} label="Add Class Photo" fill />
+          <div className="relative min-h-72 overflow-hidden bg-r8-black">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={featured.image} alt={featured.title} className="absolute inset-0 h-full w-full object-cover" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-r8-black/70 via-transparent to-r8-black/20" />
             <div className="absolute left-4 top-4">
               <Badge>Live</Badge>
             </div>
           </div>
           <div className="p-6 sm:p-8">
-            <p className="text-xs uppercase tracking-[0.18em] text-r8-blue-light">Featured Upcoming Class</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-r8-secondary">Featured Upcoming Class</p>
             <h2 className="mt-3 font-display text-3xl uppercase text-r8-white">{featured.title}</h2>
             <p className="mt-3 text-r8-secondary">
               {featured.day} · {featured.time} {timezone} · {featured.durationMinutes} min

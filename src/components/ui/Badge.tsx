@@ -2,18 +2,18 @@ import { cn } from "@/lib/utils";
 
 export function Badge({
   children,
-  tone = "blue",
+  tone = "accent",
   className,
 }: {
   children: React.ReactNode;
-  tone?: "blue" | "neutral" | "success" | "warning";
+  tone?: "accent" | "neutral" | "success" | "warning";
   className?: string;
 }) {
   const tones = {
-    blue: "bg-r8-blue/15 text-r8-blue-light border-r8-blue/30",
-    neutral: "bg-r8-elevated text-r8-secondary border-r8-border",
-    success: "bg-r8-success/15 text-r8-success border-r8-success/30",
-    warning: "bg-r8-warning/15 text-r8-warning border-r8-warning/30",
+    accent: "bg-[#181818] text-white border-white/35",
+    neutral: "bg-[#222222] text-[#C7C7C7] border-[#303030]",
+    success: "bg-[#222222] text-[#C7C7C7] border-[#303030]",
+    warning: "bg-[#222222] text-[#8C8C8C] border-[#303030]",
   };
 
   return (

@@ -3,7 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
-  description: "REIBUILT 8 refund policy placeholder.",
+  description: "DIESEL WAY refund policy placeholder.",
 };
 
 export default function RefundPolicyPage() {

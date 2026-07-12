@@ -53,9 +53,9 @@ export function Footer() {
     <footer className="mt-auto border-t border-r8-border bg-r8-black-2">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-5 lg:px-8">
         <div className="lg:col-span-1">
-          <Logo />
-          <p className="mt-4 text-sm leading-relaxed text-r8-secondary">
-            Built Different. Structured training, live coaching, and practical resources for lasting results.
+          <Logo variant="footer" />
+          <p className="mt-5 text-sm leading-relaxed text-r8-secondary">
+            Strength Through Discipline. Structured training, live coaching, and practical resources for lasting results.
           </p>
           <div className="mt-5 flex gap-3">
             {SOCIALS.map((social) => (
@@ -63,7 +63,7 @@ export function Footer() {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="rounded-md border border-r8-border p-2 text-r8-secondary hover:border-r8-blue hover:text-r8-blue-light"
+                className="rounded-md border border-r8-border p-2 text-r8-secondary hover:border-white/50 hover:text-r8-secondary"
               >
                 <SocialIcon label={social.label} path={social.path} />
               </a>
@@ -130,7 +130,7 @@ export function Footer() {
               <Button type="submit">Join</Button>
             </div>
           </form>
-          <p className="text-sm text-r8-muted">© 2026 REIBUILT 8. All rights reserved.</p>
+          <p className="text-sm text-r8-muted">© 2026 The Diesel Way. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -144,7 +144,7 @@ function FooterCol({ title, links }: { title: string; links: { href: string; lab
       <ul className="mt-4 space-y-2">
         {links.map((link) => (
           <li key={link.href}>
-            <Link href={link.href} className="text-sm text-r8-secondary hover:text-r8-blue-light">
+            <Link href={link.href} className="text-sm text-r8-secondary hover:text-r8-secondary">
               {link.label}
             </Link>
           </li>

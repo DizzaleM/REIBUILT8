@@ -17,7 +17,7 @@ export default function ContactPage() {
       <PageHero title="Contact" description="Questions about programs, membership, coaching, or partnerships." />
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
         {sent ? (
-          <div className="rounded-xl border border-r8-blue/40 bg-r8-blue/10 p-6">
+          <div className="rounded-xl border border-white/35 bg-white/5 p-6">
             <p className="font-display text-2xl uppercase text-r8-white">Message ready</p>
             <p className="mt-2 text-sm text-r8-secondary">
               This mockup does not send email yet. Connect a form provider or backend before launch.
@@ -37,7 +37,7 @@ export default function ContactPage() {
               Message
               <textarea required name="message" rows={5} className="mt-2 w-full rounded-md border border-r8-border bg-r8-black px-3 py-3 text-r8-white" />
             </label>
-            <p className="text-sm text-r8-muted">Contact email placeholder: add Rei’s official email before launch.</p>
+            <p className="text-sm text-r8-muted">Contact email placeholder: add Dem Diesel’s official email before launch.</p>
             <Button type="submit">Send Message</Button>
           </form>
         )}

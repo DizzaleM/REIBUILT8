@@ -52,9 +52,9 @@ export function scoreAssessment(answers: AssessmentAnswer[]): AssessmentScores {
 
 export function getTier(overall: number) {
   if (overall >= 85) return "Elite Ready";
-  if (overall >= 70) return "Built Different";
+  if (overall >= 70) return "Discipline Ready";
   if (overall >= 55) return "Foundation Strong";
-  if (overall >= 40) return "Rebuilding Phase";
+  if (overall >= 40) return "Building Phase";
   return "Reset Mode";
 }
 

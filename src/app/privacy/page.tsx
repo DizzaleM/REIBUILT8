@@ -30,14 +30,14 @@ function PolicyPage({
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "REIBUILT 8 privacy policy placeholder.",
+  description: "DIESEL WAY privacy policy placeholder.",
 };
 
 export default function PrivacyPage() {
   return (
     <PolicyPage
       title="Privacy Policy"
-      description="How REIBUILT 8 plans to handle visitor and member information."
+      description="How DIESEL WAY plans to handle visitor and member information."
       sections={[
         {
           heading: "Overview",

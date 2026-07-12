@@ -16,7 +16,7 @@ export default function CartPage() {
   const [promo, setPromo] = useState("");
   const shipping = items.length ? 7.99 : 0;
   const tax = subtotal * 0.07;
-  const discount = promo.trim().toUpperCase() === "R8START" ? subtotal * 0.1 : 0;
+  const discount = promo.trim().toUpperCase() === "DIESEL10" ? subtotal * 0.1 : 0;
   const total = Math.max(0, subtotal + shipping + tax - discount);
 
   return (
@@ -38,10 +38,10 @@ export default function CartPage() {
                 <div key={`${item.id}-${item.size}-${item.variant}`} className="rounded-xl border border-r8-border bg-r8-elevated p-4">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
-                      <Link href={item.type === "program" ? `/programs/${item.slug}` : item.type === "meal" ? "/meal-prep" : `/shop/${item.slug}`} className="font-display text-xl uppercase text-r8-white hover:text-r8-blue-light">
+                      <Link href={item.type === "program" ? `/programs/${item.slug}` : item.type === "meal" ? "/meal-prep" : `/shop/${item.slug}`} className="font-display text-xl uppercase text-r8-white hover:text-r8-secondary">
                         {item.name}
                       </Link>
-                      <p className="mt-1 text-sm text-r8-blue-light">{formatPrice(item.price)}</p>
+                      <p className="mt-1 text-sm text-r8-secondary">{formatPrice(item.price)}</p>
                       {(item.size || item.variant) && (
                         <p className="text-xs text-r8-muted">{[item.size, item.variant].filter(Boolean).join(" · ")}</p>
                       )}
@@ -75,7 +75,7 @@ export default function CartPage() {
               <label className="mt-6 block text-xs uppercase tracking-[0.14em] text-r8-muted">
                 Promo code
                 <div className="mt-2 flex gap-2">
-                  <input value={promo} onChange={(e) => setPromo(e.target.value)} className="w-full rounded-md border border-r8-border bg-r8-black px-3 py-2 text-sm text-r8-white" placeholder="Try R8START" />
+                  <input value={promo} onChange={(e) => setPromo(e.target.value)} className="w-full rounded-md border border-r8-border bg-r8-black px-3 py-2 text-sm text-r8-white" placeholder="Try Diesel WaySTART" />
                   <Button variant="secondary" onClick={() => pushToast(promo.trim().toUpperCase() === "R8START" ? "Promo applied." : "Promo not recognized in mockup.")}>
                     Apply
                   </Button>

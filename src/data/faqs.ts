@@ -20,14 +20,14 @@ export const faqs: FaqItem[] = [
     category: "Coaching",
     question: "How does coaching application work?",
     answer:
-      "Submit the coaching form, complete an assessment, and Rei will review fit before offering a coaching plan.",
+      "Submit the coaching form, complete an assessment, and Dem Diesel will review fit before offering a coaching plan.",
   },
   {
     id: "faq-4",
     category: "Live",
     question: "What if I miss a live class?",
     answer:
-      "Members on Built and Elite plans will have access to replays once livestreaming is connected.",
+      "Members on Forge and Diesel Elite plans will have access to replays once livestreaming is connected.",
   },
   {
     id: "faq-5",
@@ -69,14 +69,14 @@ export const coachingFaqs: FaqItem[] = [
 export const membershipFaqs: FaqItem[] = [
   {
     id: "mfaq-1",
-    question: "What is the difference between Built and Elite?",
+    question: "What is the difference between Forge and Diesel Elite?",
     answer:
-      "Built includes the full library and live classes. Elite adds monthly one-on-one coaching and priority support.",
+      "Forge includes the full library and live classes. Diesel Elite adds monthly one-on-one coaching and priority support.",
   },
   {
     id: "mfaq-2",
     question: "Are programs included in membership?",
     answer:
-      "Built and Elite include program access. Foundation includes a starter library with monthly additions.",
+      "Forge and Diesel Elite include program access. Foundation includes a starter library with monthly additions.",
   },
 ];

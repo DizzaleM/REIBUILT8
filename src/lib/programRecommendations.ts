@@ -24,9 +24,9 @@ export function buildRecommendations(answers: AssessmentAnswer[]): AssessmentRes
   if (scores.movement < 45 && goal === "performance") recommendedProgramSlug = "mobility-reset";
   if (challenge === "motivation" && goal === "combat") recommendedProgramSlug = "fight-conditioning-8-week";
 
-  let recommendedMembershipSlug: "foundation" | "built" | "elite" = "built";
+  let recommendedMembershipSlug: "foundation" | "forge" | "elite" = "forge";
   if (support === "self" || scores.overall < 45) recommendedMembershipSlug = "foundation";
-  if (support === "community" || support === "group") recommendedMembershipSlug = "built";
+  if (support === "community" || support === "group") recommendedMembershipSlug = "forge";
   if (support === "1on1" || scores.overall >= 80) recommendedMembershipSlug = "elite";
 
   let coachingOption = "Self-guided with membership structure";

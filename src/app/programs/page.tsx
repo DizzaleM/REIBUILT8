@@ -69,7 +69,7 @@ export default function ProgramsPage() {
               type="button"
               onClick={() => setCategory(c)}
               className={`rounded-md border px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] ${
-                category === c ? "border-r8-blue bg-r8-blue/15 text-r8-blue-light" : "border-r8-border text-r8-secondary"
+                category === c ? "border-white bg-white/10 text-r8-secondary" : "border-r8-border text-r8-secondary"
               }`}
             >
               {c}
@@ -91,7 +91,7 @@ export default function ProgramsPage() {
                 max={100}
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="mt-2 w-full accent-r8-blue"
+                className="mt-2 w-full accent-white"
               />
             </label>
             <label className="flex items-center gap-2 text-sm text-r8-secondary">
@@ -121,9 +121,30 @@ export default function ProgramsPage() {
               </label>
             </div>
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {filtered.map((program) => (
-                <ProgramCard key={program.id} program={program} />
-              ))}
+              {filtered.length === 0 ? (
+                <div className="col-span-full rounded-xl border border-r8-border bg-r8-elevated p-10 text-center">
+                  <p className="font-display text-2xl uppercase text-r8-white">No programs match these filters</p>
+                  <p className="mt-2 text-sm text-r8-secondary">Clear filters to see the full program library.</p>
+                  <button
+                    type="button"
+                    className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-r8-secondary"
+                    onClick={() => {
+                      setGoal("All");
+                      setLevel("All");
+                      setDuration("All");
+                      setLocation("All");
+                      setCategory("All");
+                      setEquipmentOnly(false);
+                      setMembershipOnly(false);
+                      setMaxPrice(100);
+                    }}
+                  >
+                    Reset Filters
+                  </button>
+                </div>
+              ) : (
+                filtered.map((program) => <ProgramCard key={program.id} program={program} />)
+              )}
             </div>
           </div>
         </div>

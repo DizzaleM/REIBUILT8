@@ -1,8 +1,8 @@
-# REIBUILT 8
+# DIESEL WAY
 
 Premium online fitness brand front-end mockup built with Next.js, TypeScript, and Tailwind CSS.
 
-**Built Different.**
+**Strength Through Discipline.**
 
 This repository is a visual and functional front-end only. There is no database, authentication, payments, CMS, or livestream backend connected yet.
 
@@ -29,102 +29,30 @@ npm start
 3. Use default Next.js settings.
 4. Deploy — no environment variables are required for this mockup.
 
-## Replace Brand Assets
+## Brand Assets
 
-### Logo files
+Official logo and favicon live in:
 
-Add files to `/public/brand/`:
+- `/public/brand/the-diesel-way-logo-approved.png` — approved master logo (original artwork; outlined D contrast-adjusted for dark backgrounds)
+- `/public/brand/favicon.png` — fist-based favicon
+- `/public/favicon.ico`
 
-- `reibuilt8-logo-full.png`
-- `reibuilt8-r8-mark.png`
-- `reibuilt8-logo-white.png`
+### Coach photos
 
-Until those files exist, the site uses a styled `R8` / `REIBUILT 8` text fallback.
+Coach photography currently lives under `/public/images/coach/` (legacy path). Prefer Dem Diesel cutouts and program imagery under `/public/images/programs/`, `/public/images/combat/`, and related folders.
 
-### Rei photos
+Missing images automatically fall back to a dark DIESEL WAY branded cover.
 
-Add files to `/public/images/rei/`:
+## Stack
 
-- `hero-rei.jpg`
-- `about-rei.jpg`
-- `coaching-rei.jpg`
-- `program-strength.jpg`
-- `program-fat-loss.jpg`
-- `program-athletic.jpg`
-- `program-home.jpg`
-- `live-class.jpg`
-- `workout-preview-1.jpg`
-- `workout-preview-2.jpg`
-- `workout-preview-3.jpg`
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
 
-Missing images automatically fall back to a dark placeholder with an “Add Rei Photo” label.
+## Brand
 
-## Edit Mock Data
-
-All catalog content lives in `/src/data/`:
-
-- `programs.ts`
-- `products.ts`
-- `classes.ts`
-- `meals.ts`
-- `testimonials.ts`
-- `memberships.ts`
-- `faqs.ts`
-- `assessmentQuestions.ts`
-
-Assessment scoring and recommendations:
-
-- `/src/lib/assessmentScoring.ts`
-- `/src/lib/programRecommendations.ts`
-
-AI coach mock layer:
-
-- `/src/services/aiCoach.ts`
-
-## Future Integrations
-
-### Payments
-
-Checkout buttons open a mock modal. Later connect Stripe (or another processor) through server-side routes only. Never collect card data in the browser mockup.
-
-### Authentication
-
-Login actions show a notice toast/modal. Later connect your auth provider through secure server configuration.
-
-### Livestream
-
-Live class reserve actions are mocked. Later connect an integrated streaming platform and member replay access.
-
-### AI Coach
-
-`services/aiCoach.ts` currently returns mocked coach copy. Later call a server route that holds OpenAI/Anthropic keys. Do not expose API keys in the browser.
-
-### Email / PDF assessment delivery
-
-The assessment lead-capture step is ready for email + PDF delivery once a backend and email provider are connected.
-
-## Project Structure
-
-```text
-src/
-  app/                 # Routes and pages
-  components/          # UI, layout, cards, forms, providers
-  data/                # Mock catalogs and assessment questions
-  lib/                 # Scoring, recommendations, analytics hooks, utils
-  services/            # AI coach abstraction
-  types/               # Shared TypeScript types
-public/
-  brand/               # Logo files
-  images/rei/          # Rei photo placeholders
-```
-
-## Content Still Needed
-
-See [`CONTENT-NEEDED.md`](./CONTENT-NEEDED.md) for the full launch checklist.
-
-## Scripts
-
-- `npm run dev` — local development
-- `npm run build` — production build
-- `npm run start` — serve production build
-- `npm run lint` — ESLint
+- Company: **DIESEL WAY**
+- Coach: **Demery “Dem Diesel”**
+- Tagline: **Strength Through Discipline**
+- Palette: black / charcoal / gray / white (monochrome)

@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { SafeMedia } from "@/components/ui/SafeMedia";
 import { useUi } from "@/components/providers/UiProvider";
 import { useCart } from "@/components/providers/CartProvider";
 import { formatPrice } from "@/lib/utils";
@@ -26,8 +26,8 @@ export function ProgramDetailClient({ program }: { program: Program }) {
         />
         <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
           <div>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
-              <ImagePlaceholder src={program.image} alt={program.title} label="Add Program Photo" fill />
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-r8-border">
+              <SafeMedia src={program.image} alt={program.imageAlt ?? program.title} title={program.title} />
             </div>
             <div className="mt-8 flex flex-wrap gap-2">
               <Badge>{program.goal}</Badge>
@@ -73,7 +73,7 @@ export function ProgramDetailClient({ program }: { program: Program }) {
               onClick={() => setVideoOpen(true)}
               className="relative mt-4 block aspect-video w-full overflow-hidden rounded-xl border border-r8-border"
             >
-              <ImagePlaceholder src="/images/rei/workout-preview-1.jpg" alt="Program preview" label="Add Preview Video Still" fill />
+              <SafeMedia src={program.image} alt="Program preview" title={program.title} />
             </button>
 
             <h2 className="mt-10 font-display text-2xl uppercase text-r8-white">FAQ</h2>
@@ -98,10 +98,10 @@ export function ProgramDetailClient({ program }: { program: Program }) {
               <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">One-time purchase</p>
               <p className="mt-2 font-display text-4xl text-r8-white">{formatPrice(program.price)}</p>
               <p className="mt-2 text-sm text-r8-secondary">
-                Trainer: Rei · Equipment: {program.equipment.join(", ")}
+                Trainer: Dem Diesel · Equipment: {program.equipment.join(", ")}
               </p>
               {program.membershipIncluded ? (
-                <p className="mt-3 text-sm text-r8-blue-light">Also available with Built and Elite memberships.</p>
+                <p className="mt-3 text-sm text-r8-secondary">Also available with Forge and Diesel Elite memberships.</p>
               ) : null}
               <div className="mt-6 space-y-3">
                 <Button

@@ -16,7 +16,6 @@ const headerLinks = [
   { href: "/", label: "Home" },
   { href: "/programs", label: "Programs" },
   { href: "/combat", label: "Combat" },
-  { href: "/live", label: "Live" },
   { href: "/shop", label: "Shop" },
   { href: "/meal-prep", label: "Meal Prep" },
   { href: "/about", label: "About" },
@@ -61,10 +60,10 @@ export function Header() {
             : "border-b border-transparent bg-gradient-to-b from-r8-black/80 via-r8-black/40 to-transparent",
         )}
       >
-        <div className="mx-auto grid h-[72px] max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto grid h-[72px] max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:h-[80px] sm:px-6 lg:px-8">
           {/* Left: Logo */}
-          <div className="justify-self-start">
-            <Logo showWordmark size="md" />
+          <div className="justify-self-start overflow-visible">
+            <Logo variant="nav" />
           </div>
 
           {/* Center: Nav */}
@@ -76,13 +75,13 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative px-3 py-2 text-[13px] font-medium tracking-wide text-r8-white/80 transition hover:text-r8-white",
+                    "relative px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-r8-white/75 transition hover:text-r8-white",
                     active && "text-r8-white",
                   )}
                 >
                   {link.label}
                   {active ? (
-                    <span className="absolute inset-x-3 -bottom-0.5 h-px bg-r8-blue" />
+                    <span className="absolute inset-x-3 -bottom-0.5 h-px bg-white" />
                   ) : null}
                 </Link>
               );
@@ -98,16 +97,14 @@ export function Header() {
               className="relative hidden rounded-md p-2 text-r8-white/70 hover:text-r8-white sm:inline-flex"
             >
               <ShoppingBag className="h-5 w-5" />
-              {count > 0 ? (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-r8-blue px-1 text-[10px] font-bold text-white">
-                  {count}
-                </span>
-              ) : null}
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-black">
+                {count}
+              </span>
             </button>
 
             <Link
               href="/login"
-              className="hidden rounded-md border border-white/25 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-r8-white transition hover:border-r8-blue hover:bg-r8-blue/10 md:inline-flex"
+              className="hidden rounded-md border border-white/25 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-r8-white transition hover:border-white/50 hover:bg-white/5 md:inline-flex"
             >
               Log In
             </Link>
@@ -137,7 +134,10 @@ export function Header() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-r8-black lg:hidden"
           >
-            <div className="flex h-full flex-col px-4 pb-8 pt-24">
+            <div className="flex h-full flex-col px-4 pb-8 pt-28">
+              <div className="mb-6">
+                <Logo variant="nav" />
+              </div>
               <nav className="flex flex-1 flex-col gap-1 overflow-y-auto" aria-label="Mobile">
                 {headerLinks.map((link) => (
                   <Link

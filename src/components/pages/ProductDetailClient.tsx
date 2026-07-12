@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Breadcrumbs } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { SafeMedia } from "@/components/ui/SafeMedia";
 import { Modal } from "@/components/ui/Modal";
 import { ProductCard } from "@/components/cards/ProgramCard";
 import { useCart } from "@/components/providers/CartProvider";
@@ -24,6 +24,10 @@ export function ProductDetailClient({
   const [variant, setVariant] = useState(product.variants?.[0] ?? "");
   const [qty, setQty] = useState(1);
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
+  const gallery = [product.image, ...(product.gallery ?? [])].filter(
+    (src, i, arr) => src && arr.indexOf(src) === i,
+  );
+  const [activeImage, setActiveImage] = useState(gallery[0] ?? product.image);
   const { addItem } = useCart();
   const { openCheckout, pushToast } = useUi();
 
@@ -54,14 +58,21 @@ export function ProductDetailClient({
         />
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="space-y-3">
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
-              <ImagePlaceholder src={product.image} alt={product.name} label="Add Product Photo" fill />
+            <div className="relative aspect-square overflow-hidden rounded-2xl border border-r8-border bg-r8-black">
+              <SafeMedia src={activeImage} alt={product.name} title={product.name} />
             </div>
-            <div className="grid grid-cols-3 gap-3">
-              {[0, 1, 2].map((i) => (
-                <div key={i} className="relative aspect-square overflow-hidden rounded-lg">
-                  <ImagePlaceholder alt={`${product.name} gallery ${i + 1}`} label="Gallery" fill />
-                </div>
+            <div className="grid grid-cols-4 gap-3">
+              {gallery.map((src) => (
+                <button
+                  key={src}
+                  type="button"
+                  onClick={() => setActiveImage(src)}
+                  className={`relative aspect-square overflow-hidden rounded-lg border transition ${
+                    activeImage === src ? "border-white" : "border-r8-border hover:border-white/40"
+                  }`}
+                >
+                  <SafeMedia src={src} alt={`${product.name} view`} title={product.name} />
+                </button>
               ))}
             </div>
           </div>
@@ -71,12 +82,12 @@ export function ProductDetailClient({
             <h1 className="mt-3 font-display text-4xl uppercase text-r8-white">{product.name}</h1>
             <div className="mt-3 flex items-center gap-2 text-sm text-r8-secondary">
               <span className="inline-flex items-center gap-1">
-                <Star className="h-4 w-4 fill-r8-blue text-r8-blue" />
+                <Star className="h-4 w-4 fill-white text-white" />
                 {product.rating}
               </span>
               <span>({product.reviewCount} reviews)</span>
             </div>
-            <p className="mt-4 font-display text-3xl text-r8-blue-light">{formatPrice(product.price)}</p>
+            <p className="mt-4 font-display text-3xl text-r8-secondary">{formatPrice(product.price)}</p>
             <p className="mt-4 text-r8-secondary">{product.description}</p>
 
             {product.isSupplement ? (
@@ -94,7 +105,7 @@ export function ProductDetailClient({
                       key={v}
                       type="button"
                       onClick={() => setVariant(v)}
-                      className={`rounded-md border px-3 py-2 text-sm ${variant === v ? "border-r8-blue text-r8-blue-light" : "border-r8-border text-r8-secondary"}`}
+                      className={`rounded-md border px-3 py-2 text-sm ${variant === v ? "border-white text-r8-secondary" : "border-r8-border text-r8-secondary"}`}
                     >
                       {v}
                     </button>
@@ -107,7 +118,7 @@ export function ProductDetailClient({
               <div className="mt-6">
                 <div className="flex items-center justify-between">
                   <p className="text-xs uppercase tracking-[0.14em] text-r8-muted">Size</p>
-                  <button type="button" className="text-xs text-r8-blue-light" onClick={() => setSizeGuideOpen(true)}>
+                  <button type="button" className="text-xs text-r8-secondary" onClick={() => setSizeGuideOpen(true)}>
                     Size guide
                   </button>
                 </div>
@@ -117,7 +128,7 @@ export function ProductDetailClient({
                       key={s}
                       type="button"
                       onClick={() => setSize(s)}
-                      className={`rounded-md border px-3 py-2 text-sm ${size === s ? "border-r8-blue text-r8-blue-light" : "border-r8-border text-r8-secondary"}`}
+                      className={`rounded-md border px-3 py-2 text-sm ${size === s ? "border-white text-r8-secondary" : "border-r8-border text-r8-secondary"}`}
                     >
                       {s}
                     </button>

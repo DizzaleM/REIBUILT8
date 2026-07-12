@@ -21,10 +21,10 @@ export default function CombatPage() {
   return (
     <div>
       <section className="relative overflow-hidden border-b border-r8-border bg-r8-black pt-28 pb-16">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_40%,rgba(10,132,255,0.2),transparent_50%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_40%,rgba(255,255,255,0.2),transparent_50%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-r8-blue-light">Combat Training</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-r8-secondary">Combat Training</p>
             <h1 className="mt-4 font-display text-5xl font-bold uppercase leading-[0.9] text-r8-white sm:text-6xl">
               Train Like a Fighter.
             </h1>
@@ -41,8 +41,9 @@ export default function CombatPage() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
             <TreatedPhoto
-              src="/images/programs/combat-heavy-bag.jpg"
-              alt="Rei training boxing combinations on a heavy bag"
+              src="/images/combat/heavy-bag.jpg"
+              alt="Dem Diesel training boxing combinations on a heavy bag"
+              title="Combat Training"
               priority
             />
           </div>
@@ -53,7 +54,7 @@ export default function CombatPage() {
         <SectionHeading title="Combat Categories" description="Technique-first training focused on discipline, athleticism, and confidence — not violence." />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {combatCategories.map((cat) => (
-            <div key={cat.id} className="rounded-xl border border-r8-border bg-r8-elevated p-5 transition hover:border-r8-blue/50">
+            <div key={cat.id} className="rounded-xl border border-r8-border bg-r8-elevated p-5 transition hover:border-white/40">
               <Badge tone="neutral">{cat.level}</Badge>
               <h3 className="mt-3 font-display text-xl uppercase text-r8-white">{cat.title}</h3>
               <p className="mt-2 text-sm text-r8-secondary">{cat.description}</p>
@@ -113,7 +114,7 @@ export default function CombatPage() {
             {combatPrograms.map((program) => (
               <article key={program.id} className="overflow-hidden rounded-xl border border-r8-border bg-r8-elevated">
                 <div className="relative aspect-[16/10]">
-                  <TreatedPhoto src={program.image} alt={program.imageAlt} />
+                  <TreatedPhoto src={program.image} alt={program.imageAlt} title={program.title} />
                 </div>
                 <div className="p-5">
                   <Badge>{program.difficulty}</Badge>
@@ -134,7 +135,7 @@ export default function CombatPage() {
                     </div>
                     <div>
                       <dt>Price</dt>
-                      <dd className="text-r8-blue-light">{formatPrice(program.price)}</dd>
+                      <dd className="text-r8-secondary">{formatPrice(program.price)}</dd>
                     </div>
                   </dl>
                   <p className="mt-3 text-xs text-r8-muted">Equipment: {program.equipment.join(", ")}</p>
@@ -173,7 +174,7 @@ export default function CombatPage() {
               <div className="p-4">
                 <h3 className="font-display text-lg uppercase text-r8-white">{item.name}</h3>
                 <p className="mt-1 text-sm text-r8-secondary">{item.description}</p>
-                <p className="mt-3 text-r8-blue-light">{formatPrice(item.price)}</p>
+                <p className="mt-3 text-r8-secondary">{formatPrice(item.price)}</p>
                 <Button
                   size="sm"
                   className="mt-3"

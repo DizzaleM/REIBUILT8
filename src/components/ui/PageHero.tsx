@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 
 export function Breadcrumbs({
@@ -12,7 +13,7 @@ export function Breadcrumbs({
         {items.map((item, index) => (
           <li key={`${item.label}-${index}`} className="inline-flex items-center gap-2">
             {item.href ? (
-              <Link href={item.href} className="hover:text-r8-blue-light">
+              <Link href={item.href} className="hover:text-r8-secondary">
                 {item.label}
               </Link>
             ) : (
@@ -39,6 +40,9 @@ export function EmptyState({
 }) {
   return (
     <div className={cn("rounded-xl border border-dashed border-r8-border bg-r8-charcoal px-6 py-12 text-center", className)}>
+      <div className="mb-6 flex justify-center">
+        <Logo href={false} variant="modal" />
+      </div>
       <h3 className="font-display text-2xl uppercase text-r8-white">{title}</h3>
       <p className="mx-auto mt-3 max-w-md text-sm text-r8-secondary">{description}</p>
       {action ? <div className="mt-6 flex justify-center">{action}</div> : null}
@@ -56,10 +60,13 @@ export function PageHero({
   eyebrow?: string;
 }) {
   return (
-    <section className="border-b border-r8-border bg-r8-black-2 pt-28 pb-12 sm:pt-32">
+    <section className="border-b border-r8-border bg-r8-black-2 pt-32 pb-12 sm:pt-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <Logo href={false} variant="modal" />
+        </div>
         {eyebrow ? (
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-r8-blue-light">{eyebrow}</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-r8-secondary">{eyebrow}</p>
         ) : null}
         <h1 className="font-display text-4xl font-bold uppercase leading-none tracking-wide text-r8-white sm:text-5xl lg:text-6xl">
           {title}

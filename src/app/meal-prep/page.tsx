@@ -50,14 +50,14 @@ export default function MealPrepPage() {
             <button
               type="button"
               onClick={() => setPurchaseType("subscription")}
-              className={`rounded-md px-3 py-2 text-xs uppercase tracking-[0.12em] ${purchaseType === "subscription" ? "bg-r8-blue text-white" : "text-r8-secondary"}`}
+              className={`rounded-md px-3 py-2 text-xs uppercase tracking-[0.12em] ${purchaseType === "subscription" ? "bg-white text-black" : "text-r8-secondary"}`}
             >
               Subscription
             </button>
             <button
               type="button"
               onClick={() => setPurchaseType("one-time")}
-              className={`rounded-md px-3 py-2 text-xs uppercase tracking-[0.12em] ${purchaseType === "one-time" ? "bg-r8-blue text-white" : "text-r8-secondary"}`}
+              className={`rounded-md px-3 py-2 text-xs uppercase tracking-[0.12em] ${purchaseType === "one-time" ? "bg-white text-black" : "text-r8-secondary"}`}
             >
               One-time
             </button>
@@ -85,11 +85,11 @@ export default function MealPrepPage() {
             </label>
             <label className="block text-xs uppercase tracking-[0.14em] text-r8-muted">
               Min protein ({proteinMin}g)
-              <input type="range" min={0} max={50} value={proteinMin} onChange={(e) => setProteinMin(Number(e.target.value))} className="mt-2 w-full accent-r8-blue" />
+              <input type="range" min={0} max={50} value={proteinMin} onChange={(e) => setProteinMin(Number(e.target.value))} className="mt-2 w-full accent-white" />
             </label>
             <label className="block text-xs uppercase tracking-[0.14em] text-r8-muted">
               Max calories ({calorieMax})
-              <input type="range" min={350} max={700} value={calorieMax} onChange={(e) => setCalorieMax(Number(e.target.value))} className="mt-2 w-full accent-r8-blue" />
+              <input type="range" min={350} max={700} value={calorieMax} onChange={(e) => setCalorieMax(Number(e.target.value))} className="mt-2 w-full accent-white" />
             </label>
             <label className="block text-xs uppercase tracking-[0.14em] text-r8-muted">
               Dietary preference

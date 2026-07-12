@@ -19,7 +19,7 @@ function ShopContent() {
   const initialCategory = searchParams.get("category") ?? "All";
   const [category, setCategory] = useState(initialCategory);
   const [query, setQuery] = useState("");
-  const [maxPrice, setMaxPrice] = useState(100);
+  const [maxPrice, setMaxPrice] = useState(200);
   const [sort, setSort] = useState("Featured");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [quickView, setQuickView] = useState<Product | null>(null);
@@ -73,7 +73,7 @@ function ShopContent() {
               type="button"
               onClick={() => setCategory(c)}
               className={`rounded-md border px-3 py-2 text-xs ${
-                category === c ? "border-r8-blue text-r8-blue-light" : "border-r8-border text-r8-secondary"
+                category === c ? "border-white text-r8-secondary" : "border-r8-border text-r8-secondary"
               }`}
             >
               {c}
@@ -83,14 +83,14 @@ function ShopContent() {
       </div>
       <label className="block text-xs uppercase tracking-[0.14em] text-r8-muted">
         Max price (${maxPrice})
-        <input type="range" min={20} max={100} value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="mt-2 w-full accent-r8-blue" />
+        <input type="range" min={20} max={200} value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="mt-2 w-full accent-white" />
       </label>
     </div>
   );
 
   return (
     <div>
-      <PageHero title="Shop REIBUILT 8" description="Apparel, accessories, digital programs, and more — front-end storefront mockup." />
+      <PageHero title="Shop DIESEL WAY" description="Apparel, accessories, digital programs, and more — front-end storefront mockup." />
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-r8-muted">{filtered.length} products</p>
@@ -113,27 +113,45 @@ function ShopContent() {
         <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
           <aside className="hidden h-fit rounded-xl border border-r8-border bg-r8-charcoal p-4 lg:block">{Filters}</aside>
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {filtered.map((product) => (
-              <div key={product.id} className="relative">
-                <button
-                  type="button"
-                  aria-label="Favorite"
-                  onClick={() =>
-                    setFavorites((prev) =>
-                      prev.includes(product.id) ? prev.filter((id) => id !== product.id) : [...prev, product.id],
-                    )
-                  }
-                  className="absolute right-3 top-3 z-10 rounded-full border border-r8-border bg-r8-black/70 p-2"
+            {filtered.length === 0 ? (
+              <div className="col-span-full rounded-xl border border-r8-border bg-r8-elevated p-10 text-center">
+                <p className="font-display text-2xl uppercase text-r8-white">No products in this view</p>
+                <p className="mt-2 text-sm text-r8-secondary">Try another category or raise the max price filter.</p>
+                <Button
+                  className="mt-5"
+                  variant="secondary"
+                  onClick={() => {
+                    setCategory("All");
+                    setQuery("");
+                    setMaxPrice(200);
+                  }}
                 >
-                  <Heart className={`h-4 w-4 ${favorites.includes(product.id) ? "fill-r8-blue text-r8-blue" : "text-r8-white"}`} />
-                </button>
-                <ProductCard
-                  product={product}
-                  onAdd={() => addProduct(product)}
-                  onQuickView={() => setQuickView(product)}
-                />
+                  Show All Products
+                </Button>
               </div>
-            ))}
+            ) : (
+              filtered.map((product) => (
+                <div key={product.id} className="relative">
+                  <button
+                    type="button"
+                    aria-label="Favorite"
+                    onClick={() =>
+                      setFavorites((prev) =>
+                        prev.includes(product.id) ? prev.filter((id) => id !== product.id) : [...prev, product.id],
+                      )
+                    }
+                    className="absolute right-3 top-3 z-10 rounded-full border border-r8-border bg-r8-black/70 p-2"
+                  >
+                    <Heart className={`h-4 w-4 ${favorites.includes(product.id) ? "fill-white text-white" : "text-r8-white"}`} />
+                  </button>
+                  <ProductCard
+                    product={product}
+                    onAdd={() => addProduct(product)}
+                    onQuickView={() => setQuickView(product)}
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -148,7 +166,7 @@ function ShopContent() {
       <Modal open={Boolean(quickView)} onClose={() => setQuickView(null)} title={quickView?.name ?? "Quick View"}>
         {quickView ? (
           <div>
-            <p className="text-r8-blue-light">{formatPrice(quickView.price)}</p>
+            <p className="text-r8-secondary">{formatPrice(quickView.price)}</p>
             <p className="mt-3 text-sm text-r8-secondary">{quickView.description}</p>
             <div className="mt-6 flex gap-3">
               <Button

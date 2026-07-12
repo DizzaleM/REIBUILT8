@@ -3,7 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Fitness Disclaimer",
-  description: "REIBUILT 8 fitness disclaimer placeholder.",
+  description: "DIESEL WAY fitness disclaimer placeholder.",
 };
 
 export default function FitnessDisclaimerPage() {
@@ -15,7 +15,7 @@ export default function FitnessDisclaimerPage() {
       />
       <section className="mx-auto max-w-3xl space-y-4 px-4 py-12 text-sm leading-relaxed text-r8-secondary sm:px-6 lg:px-8">
         <p>
-          REIBUILT 8 provides fitness education and coaching resources for general informational purposes. Always consult
+          DIESEL WAY provides fitness education and coaching resources for general informational purposes. Always consult
           a qualified healthcare professional before beginning a new training or nutrition program.
         </p>
         <p>

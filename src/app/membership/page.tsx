@@ -26,14 +26,14 @@ export default function MembershipPage() {
             <button
               type="button"
               onClick={() => setAnnual(false)}
-              className={`rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] ${!annual ? "bg-r8-blue text-white" : "text-r8-secondary"}`}
+              className={`rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] ${!annual ? "bg-r8-white text-r8-black" : "text-r8-secondary"}`}
             >
               Monthly
             </button>
             <button
               type="button"
               onClick={() => setAnnual(true)}
-              className={`rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] ${annual ? "bg-r8-blue text-white" : "text-r8-secondary"}`}
+              className={`rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] ${annual ? "bg-r8-white text-r8-black" : "text-r8-secondary"}`}
             >
               Annual · Save 15%
             </button>
@@ -59,8 +59,8 @@ export default function MembershipPage() {
                 <tr>
                   <th className="px-4 py-3 font-medium">Feature</th>
                   <th className="px-4 py-3 font-medium">Foundation</th>
-                  <th className="px-4 py-3 font-medium">Built</th>
-                  <th className="px-4 py-3 font-medium">Elite</th>
+                  <th className="px-4 py-3 font-medium">Forge</th>
+                  <th className="px-4 py-3 font-medium">Diesel Elite</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,7 +68,7 @@ export default function MembershipPage() {
                   <tr key={row.feature} className="border-t border-r8-border">
                     <td className="px-4 py-3 text-r8-white">{row.feature}</td>
                     <td className="px-4 py-3 text-r8-secondary">{row.foundation}</td>
-                    <td className="px-4 py-3 text-r8-secondary">{row.built}</td>
+                    <td className="px-4 py-3 text-r8-secondary">{row.forge}</td>
                     <td className="px-4 py-3 text-r8-secondary">{row.elite}</td>
                   </tr>
                 ))}
@@ -81,7 +81,7 @@ export default function MembershipPage() {
           {[
             ["On-Demand Library", "Train anytime with structured programs and weekly drops."],
             ["Live Class Access", "Show up live or catch member replays when available."],
-            ["Community Preview", "Stay accountable with member check-ins and challenges."],
+            ["Diesel Community", "Stay accountable with member check-ins and challenges."],
           ].map(([title, copy]) => (
             <div key={title} className="rounded-xl border border-r8-border bg-r8-charcoal p-5">
               <h3 className="font-display text-xl uppercase text-r8-white">{title}</h3>
@@ -111,8 +111,8 @@ export default function MembershipPage() {
           </div>
         </div>
 
-        <div className="mt-16 rounded-2xl border border-r8-border bg-[linear-gradient(180deg,#10141A_0%,#0B1A33_100%)] p-8 text-center">
-          <h2 className="font-display text-4xl uppercase text-r8-white">Ready to Train with Structure?</h2>
+        <div className="mt-16 rounded-2xl border border-r8-border bg-[linear-gradient(180deg,#141414_0%,#0a0a0a_100%)] p-8 text-center">
+          <h2 className="font-display text-4xl uppercase text-r8-white">Strength Through Discipline</h2>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button href="/assessment">Get My Personalized Plan</Button>
             <Button href="/coaching" variant="secondary">

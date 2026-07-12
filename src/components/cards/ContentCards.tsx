@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { formatPrice } from "@/lib/utils";
 import type { LiveClass, Meal, MembershipPlan, Testimonial } from "@/types";
 import { Star } from "lucide-react";
@@ -17,8 +16,10 @@ export function LiveClassCard({
 }) {
   return (
     <article className="overflow-hidden rounded-xl border border-r8-border bg-r8-elevated">
-      <div className="relative aspect-[16/9]">
-        <ImagePlaceholder src={liveClass.image} alt={liveClass.title} label="Add Class Photo" fill />
+      <div className="relative aspect-[16/9] overflow-hidden bg-r8-black">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={liveClass.image} alt={liveClass.title} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-r8-black/70 via-transparent to-r8-black/20" />
         <div className="absolute left-3 top-3 flex gap-2">
           {liveClass.isPast ? <Badge tone="neutral">Replay</Badge> : <Badge>Live</Badge>}
           <Badge tone="neutral">{liveClass.type}</Badge>
@@ -33,7 +34,7 @@ export function LiveClassCard({
           {liveClass.level} · {liveClass.equipment} · Coach {liveClass.coach}
         </p>
         {!liveClass.isPast ? (
-          <p className="mt-3 text-xs uppercase tracking-wider text-r8-blue-light">
+          <p className="mt-3 text-xs uppercase tracking-wider text-r8-secondary">
             {liveClass.spotsRemaining} spots remaining
           </p>
         ) : null}
@@ -52,8 +53,9 @@ export function LiveClassCard({
 export function MealCard({ meal, onAdd }: { meal: Meal; onAdd?: () => void }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-r8-border bg-r8-elevated">
-      <div className="relative aspect-[16/10]">
-        <ImagePlaceholder src={meal.image} alt={meal.name} label="Add Meal Photo" fill />
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#0a0c10]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={meal.image} alt={meal.name} className="absolute inset-0 h-full w-full object-cover" />
       </div>
       <div className="flex flex-1 flex-col p-4">
         <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">{meal.category}</p>
@@ -79,7 +81,7 @@ export function MealCard({ meal, onAdd }: { meal: Meal; onAdd?: () => void }) {
         <p className="mt-3 line-clamp-2 text-xs text-r8-muted">{meal.ingredients.join(" · ")}</p>
         <div className="mt-4 flex items-end justify-between gap-3">
           <div>
-            <p className="text-r8-blue-light">{formatPrice(meal.price)}</p>
+            <p className="text-r8-secondary">{formatPrice(meal.price)}</p>
             <p className="text-xs text-r8-muted">Sub {formatPrice(meal.subscriptionPrice)}</p>
           </div>
           <Button size="sm" onClick={onAdd}>
@@ -105,7 +107,7 @@ export function PricingCard({
     <motion.article
       whileHover={{ y: -4 }}
       className={`relative flex h-full flex-col rounded-xl border p-6 ${
-        plan.popular ? "border-r8-blue bg-r8-elevated shadow-[0_0_40px_rgba(8,107,255,0.15)]" : "border-r8-border bg-r8-charcoal"
+        plan.popular ? "border-white bg-r8-elevated shadow-[0_0_40px_rgba(255,255,255,0.15)]" : "border-r8-border bg-r8-charcoal"
       }`}
     >
       {plan.popular ? (
@@ -119,11 +121,11 @@ export function PricingCard({
         {formatPrice(price)}
         <span className="text-base text-r8-muted">/month</span>
       </p>
-      {annual ? <p className="mt-1 text-xs text-r8-blue-light">Billed annually · Save 15%</p> : null}
+      {annual ? <p className="mt-1 text-xs text-r8-secondary">Billed annually · Save 15%</p> : null}
       <ul className="mt-6 flex-1 space-y-2 text-sm text-r8-secondary">
         {plan.features.map((feature) => (
           <li key={feature} className="flex gap-2">
-            <span className="text-r8-blue-light">▸</span>
+            <span className="text-r8-secondary">▸</span>
             <span>{feature}</span>
           </li>
         ))}
@@ -139,12 +141,13 @@ export function TestimonialCard({ item }: { item: Testimonial }) {
   return (
     <article className="h-full rounded-xl border border-r8-border bg-r8-elevated p-6">
       <div className="flex items-center gap-4">
-        <div className="relative h-14 w-14 overflow-hidden rounded-full border border-r8-border">
-          {item.image ? (
-            <ImagePlaceholder src={item.image} alt={`Portrait representing ${item.name}`} fill cutout objectFit="cover" label={item.imageLabel} />
-          ) : (
-            <ImagePlaceholder alt={item.name} label={item.imageLabel} className="h-14 w-14" />
-          )}
+        <div className="relative h-14 w-14 overflow-hidden rounded-full border border-r8-border bg-r8-charcoal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={item.image || "/images/testimonials/member-1.jpg"}
+            alt={`${item.name}`}
+            className="h-full w-full object-cover"
+          />
         </div>
         <div>
           <p className="font-semibold text-r8-white">{item.name}</p>
@@ -153,11 +156,11 @@ export function TestimonialCard({ item }: { item: Testimonial }) {
       </div>
       <div className="mt-4 flex gap-1" aria-label={`${item.rating} out of 5 stars`}>
         {Array.from({ length: item.rating }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 fill-r8-blue text-r8-blue" />
+          <Star key={i} className="h-4 w-4 fill-white text-white" />
         ))}
       </div>
       <p className="mt-4 text-sm leading-relaxed text-r8-secondary">&ldquo;{item.quote}&rdquo;</p>
-      {item.verified ? <p className="mt-4 text-xs uppercase tracking-wider text-r8-blue-light">Verified member</p> : null}
+      {item.verified ? <p className="mt-4 text-xs uppercase tracking-wider text-r8-secondary">Verified member</p> : null}
     </article>
   );
 }

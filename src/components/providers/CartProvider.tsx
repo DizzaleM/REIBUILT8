@@ -22,7 +22,7 @@ interface CartContextValue {
 }
 
 const CartContext = createContext<CartContextValue | null>(null);
-const STORAGE_KEY = "reibuilt8-cart";
+const STORAGE_KEY = "dieselway-cart";
 
 function sameLine(a: CartItem, id: string, variant?: string, size?: string) {
   return a.id === id && a.variant === variant && a.size === size;

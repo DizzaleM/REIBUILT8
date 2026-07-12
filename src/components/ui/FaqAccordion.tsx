@@ -22,7 +22,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               onClick={() => setOpenId(open ? null : item.id)}
             >
               <span className="font-medium text-r8-white">{item.question}</span>
-              <ChevronDown className={cn("h-4 w-4 shrink-0 text-r8-blue-light transition", open && "rotate-180")} />
+              <ChevronDown className={cn("h-4 w-4 shrink-0 text-r8-secondary transition", open && "rotate-180")} />
             </button>
             <AnimatePresence initial={false}>
               {open ? (

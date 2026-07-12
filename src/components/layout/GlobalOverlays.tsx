@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 import { useUi } from "@/components/providers/UiProvider";
 import { useCart } from "@/components/providers/CartProvider";
 import { programs } from "@/data/programs";
@@ -47,6 +48,9 @@ export function GlobalOverlays() {
   return (
     <>
       <Modal open={checkoutOpen} onClose={() => setCheckoutOpen(false)} title="Checkout Coming Soon">
+        <div className="mb-5 flex justify-center">
+          <Logo href={false} variant="modal" />
+        </div>
         <p className="text-sm leading-relaxed text-r8-secondary">{checkoutMessage}</p>
         <p className="mt-3 text-sm text-r8-muted">
           Secure payment processing will be connected later. No card details are collected in this mockup.
@@ -62,12 +66,15 @@ export function GlobalOverlays() {
       </Modal>
 
       <Modal open={videoOpen} onClose={() => setVideoOpen(false)} title="Meet Your Coach" className="sm:max-w-2xl">
+        <div className="mb-5 flex justify-center">
+          <Logo href={false} variant="modal" />
+        </div>
         <div className="aspect-video rounded-lg border border-r8-border bg-r8-black bg-grid-subtle">
           <div className="flex h-full items-center justify-center p-6 text-center">
             <div>
               <p className="font-display text-2xl uppercase text-r8-white">Welcome Video Placeholder</p>
               <p className="mt-2 text-sm text-r8-secondary">
-                A welcome video from Rei will be added later. Duration preview: 1:32
+                A welcome video from Dem Diesel will be added later. Duration preview: 1:32
               </p>
             </div>
           </div>
@@ -98,7 +105,7 @@ export function GlobalOverlays() {
         </Button>
       </Modal>
 
-      <Modal open={searchOpen} onClose={() => setSearchOpen(false)} title="Search REIBUILT 8" className="sm:max-w-2xl">
+      <Modal open={searchOpen} onClose={() => setSearchOpen(false)} title="Search DIESEL WAY" className="sm:max-w-2xl">
         <label htmlFor="site-search" className="sr-only">
           Search
         </label>
@@ -134,7 +141,7 @@ export function GlobalOverlays() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="font-medium text-r8-white">{item.name}</p>
-                    <p className="text-sm text-r8-blue-light">{formatPrice(item.price)}</p>
+                    <p className="text-sm text-r8-secondary">{formatPrice(item.price)}</p>
                     {(item.size || item.variant) && (
                       <p className="text-xs text-r8-muted">
                         {[item.size, item.variant].filter(Boolean).join(" · ")}
@@ -218,9 +225,9 @@ function SearchGroup({
             <Link
               href={item.href}
               onClick={onNavigate}
-              className="block rounded-lg border border-r8-border bg-r8-black px-3 py-3 hover:border-r8-blue"
+              className="block rounded-lg border border-r8-border bg-r8-black px-3 py-3 hover:border-white/50"
             >
-              <p className="text-xs uppercase tracking-wider text-r8-blue-light">{item.type}</p>
+              <p className="text-xs uppercase tracking-wider text-r8-secondary">{item.type}</p>
               <p className="font-medium text-r8-white">{item.name}</p>
               <p className="line-clamp-1 text-xs text-r8-muted">{item.desc}</p>
             </Link>

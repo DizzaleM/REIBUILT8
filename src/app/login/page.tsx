@@ -3,6 +3,7 @@
 import { FormEvent } from "react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 import { useUi } from "@/components/providers/UiProvider";
 
 export default function LoginPage() {
@@ -18,6 +19,9 @@ export default function LoginPage() {
     <div>
       <PageHero title="Member Login" description="Authentication is mocked for this front-end phase." />
       <section className="mx-auto max-w-md px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-8 flex justify-center">
+          <Logo href={false} variant="footer" />
+        </div>
         <form onSubmit={notify} className="space-y-4 rounded-2xl border border-r8-border bg-r8-elevated p-6">
           <label className="block text-sm text-r8-secondary">
             Email
@@ -31,7 +35,7 @@ export default function LoginPage() {
             <label className="inline-flex items-center gap-2 text-r8-secondary">
               <input type="checkbox" /> Remember me
             </label>
-            <button type="button" className="text-r8-blue-light" onClick={() => notify()}>
+            <button type="button" className="text-r8-secondary" onClick={() => notify()}>
               Forgot password
             </button>
           </div>

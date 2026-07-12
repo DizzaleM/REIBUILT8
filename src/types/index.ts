@@ -30,7 +30,7 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
-  category: "Apparel" | "Supplements" | "Accessories" | "Digital Programs" | "Meal Prep" | "Gift Cards";
+  category: "Apparel" | "Supplements" | "Accessories" | "Combat" | "Digital Programs" | "Meal Prep" | "Gift Cards";
   price: number;
   compareAt?: number;
   rating: number;

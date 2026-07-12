@@ -100,10 +100,10 @@ export default function AssessmentPage() {
 
   return (
     <div className="fixed inset-0 z-[60] overflow-y-auto bg-r8-black">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(8,107,255,0.16),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.16),transparent_50%)]" />
       <div className="relative mx-auto flex min-h-full max-w-3xl flex-col px-4 py-6 sm:px-6">
         <div className="flex items-center justify-between gap-4">
-          <Logo href="/" />
+          <Logo href="/" variant="nav" />
           <Link href="/" className="text-xs uppercase tracking-[0.16em] text-r8-muted hover:text-r8-white">
             Exit
           </Link>
@@ -124,7 +124,7 @@ export default function AssessmentPage() {
           </div>
           <div className="h-1.5 overflow-hidden rounded-full bg-r8-elevated">
             <motion.div
-              className="h-full bg-r8-blue"
+              className="h-full bg-white"
               animate={{ width: `${progress}%` }}
               transition={{ duration: reduce ? 0 : 0.35 }}
             />
@@ -141,7 +141,7 @@ export default function AssessmentPage() {
                 exit={reduce ? undefined : { opacity: 0, y: -12 }}
                 className="text-center"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-r8-blue-light">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-r8-secondary">
                   Premium Coaching Consultation
                 </p>
                 <h1 className="mt-4 font-display text-4xl uppercase leading-none text-r8-white sm:text-5xl">
@@ -180,12 +180,12 @@ export default function AssessmentPage() {
                         className={cn(
                           "flex w-full items-center justify-between gap-4 rounded-xl border px-4 py-4 text-left transition",
                           active
-                            ? "border-r8-blue bg-r8-blue/10 text-r8-white"
-                            : "border-r8-border bg-r8-elevated text-r8-secondary hover:border-r8-blue/50 hover:text-r8-white",
+                            ? "border-white bg-white/5 text-r8-white"
+                            : "border-r8-border bg-r8-elevated text-r8-secondary hover:border-white/40 hover:text-r8-white",
                         )}
                       >
                         <span className="text-sm sm:text-base">{option.label}</span>
-                        {active ? <Check className="h-4 w-4 text-r8-blue-light" /> : null}
+                        {active ? <Check className="h-4 w-4 text-r8-secondary" /> : null}
                       </button>
                     );
                   })}
@@ -263,7 +263,7 @@ export default function AssessmentPage() {
                 className="space-y-10 pb-16"
               >
                 <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-r8-blue-light">
+                  <p className="text-xs uppercase tracking-[0.18em] text-r8-secondary">
                     {lead.firstName}&apos;s Fitness Snapshot
                   </p>
                   <h2 className="mt-3 font-display text-4xl uppercase text-r8-white">Your Coaching Report</h2>
@@ -321,7 +321,7 @@ export default function AssessmentPage() {
                   <ol className="mt-4 space-y-3">
                     {result.first30Days.map((item, i) => (
                       <li key={item} className="rounded-lg border border-r8-border bg-r8-elevated px-4 py-3 text-sm text-r8-secondary">
-                        <span className="text-r8-blue-light">0{i + 1}.</span> {item}
+                        <span className="text-r8-secondary">0{i + 1}.</span> {item}
                       </li>
                     ))}
                   </ol>
@@ -345,7 +345,7 @@ export default function AssessmentPage() {
                         <Badge>{combatProgram.difficulty}</Badge>
                         <h4 className="mt-3 font-display text-2xl uppercase text-r8-white">{combatProgram.title}</h4>
                         <p className="mt-2 text-sm text-r8-secondary">{combatProgram.summary}</p>
-                        <p className="mt-3 text-r8-blue-light">{formatPrice(combatProgram.price)}</p>
+                        <p className="mt-3 text-r8-secondary">{formatPrice(combatProgram.price)}</p>
                         <Button href="/combat#programs" className="mt-4">
                           View Combat Programs
                         </Button>
@@ -361,7 +361,7 @@ export default function AssessmentPage() {
                       <button
                         type="button"
                         onClick={() => setAnnual((v) => !v)}
-                        className="text-xs uppercase tracking-[0.14em] text-r8-blue-light"
+                        className="text-xs uppercase tracking-[0.14em] text-r8-secondary"
                       >
                         Toggle {annual ? "Monthly" : "Annual"}
                       </button>
