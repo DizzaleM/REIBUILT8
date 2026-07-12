@@ -15,8 +15,17 @@ export default function AboutPage() {
       <PageHero title="Meet Rei" description="Founder-led training built on structure, accountability, and practical coaching." />
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-            <ImagePlaceholder src="/images/rei/about-rei.jpg" alt="Rei" label="Add Rei Photo" fill />
+          <div className="relative mx-auto aspect-[3/4] max-w-md">
+            <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-r8-blue/20 blur-3xl" />
+            <ImagePlaceholder
+              src="/images/rei/about-rei.png"
+              alt="Rei"
+              label="Add Rei Photo"
+              fill
+              cutout
+              objectFit="contain"
+              className="object-contain object-bottom"
+            />
           </div>
           <div>
             <SectionHeading title="Coaching Philosophy" />

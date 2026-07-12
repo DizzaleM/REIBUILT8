@@ -14,10 +14,11 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/programs", label: "Programs" },
   { href: "/live", label: "Live" },
-  { href: "/coaching", label: "Coaching" },
-  { href: "/membership", label: "Membership" },
   { href: "/shop", label: "Shop" },
   { href: "/meal-prep", label: "Meal Prep" },
   { href: "/about", label: "About" },
+  { href: "/community", label: "Community" },
+  { href: "/coaching", label: "Coaching" },
+  { href: "/membership", label: "Membership" },
   { href: "/assessment", label: "Assessment" },
 ];

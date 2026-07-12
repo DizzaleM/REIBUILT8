@@ -6,7 +6,7 @@ const variants = {
   primary:
     "bg-r8-blue text-r8-white hover:bg-r8-blue-light shadow-[0_0_0_1px_rgba(8,107,255,0.35)]",
   secondary:
-    "bg-transparent text-r8-white border border-r8-border hover:border-r8-blue-light hover:text-r8-blue-light",
+    "bg-transparent text-r8-white border border-white/35 hover:border-r8-blue-light hover:text-r8-blue-light",
   ghost: "bg-transparent text-r8-secondary hover:text-r8-white",
   dark: "bg-r8-elevated text-r8-white border border-r8-border hover:border-r8-blue",
 };

@@ -123,6 +123,6 @@ export const meals: Meal[] = [
     price: 11.5,
     subscriptionPrice: 9.5,
     dietary: ["High Protein", "Breakfast"],
-    image: "/images/rei/about-rei.jpg",
+    image: "/images/rei/about-rei.png",
   },
 ];

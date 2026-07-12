@@ -79,24 +79,13 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero — full-bleed cinematic layout aligned to brand mockup */}
+      {/* Hero — mockup layout: copy left, cutout subject right on pure black */}
       <section className="relative min-h-[100svh] overflow-hidden bg-r8-black">
-        <div className="absolute inset-0">
-          <ImagePlaceholder
-            src="/images/rei/hero-rei.jpg"
-            alt="Rei — REIBUILT 8 coach"
-            label="Add Rei Photo"
-            fill
-            priority
-            className="object-cover object-[center_20%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-r8-black via-r8-black/85 to-r8-black/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-r8-black via-transparent to-r8-black/50" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(10,132,255,0.22),transparent_55%)]" />
-        </div>
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_45%,rgba(10,132,255,0.28),transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,81,204,0.12),transparent_45%)]" />
 
-        <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-24 pt-28 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
+        <div className="relative mx-auto grid min-h-[100svh] max-w-[1400px] items-center gap-8 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-10">
+          <div className="relative z-10 max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-r8-blue-light">
               Online Training. Real Structure. Real Results.
             </p>
@@ -111,37 +100,55 @@ export default function HomePage() {
               <Button href="/assessment" size="lg">
                 Start Your Journey
               </Button>
-              <Button href="/programs" variant="secondary" size="lg">
+              <Button href="/programs" variant="secondary" size="lg" className="border-white/40">
                 <Play className="h-4 w-4" /> Browse Programs
               </Button>
             </div>
+
+            <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
+              {trustItems.map((item) => (
+                <li key={item} className="text-center sm:text-left">
+                  <span className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-r8-blue/40 text-r8-blue-light sm:mx-0">
+                    <Activity className="h-4 w-4" />
+                  </span>
+                  <span className="block text-[11px] font-semibold uppercase tracking-[0.12em] text-r8-secondary">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <ul className="mt-14 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {trustItems.map((item) => (
-              <li
-                key={item}
-                className="rounded-lg border border-r8-border/80 bg-r8-black/50 px-3 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.12em] text-r8-secondary backdrop-blur-sm"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+          <div className="relative mx-auto flex min-h-[420px] w-full max-w-lg items-end justify-center lg:min-h-[640px] lg:max-w-none">
+            <div className="pointer-events-none absolute bottom-[8%] left-1/2 h-[55%] w-[70%] -translate-x-1/2 rounded-full bg-r8-blue/25 blur-3xl" />
+            <div className="relative h-full w-full max-h-[78vh]">
+              <ImagePlaceholder
+                src="/images/rei/hero-rei.png"
+                alt="Rei — REIBUILT 8 coach"
+                label="Add Rei Photo"
+                fill
+                priority
+                cutout
+                objectFit="contain"
+                className="object-contain object-bottom drop-shadow-[0_20px_60px_rgba(10,132,255,0.25)]"
+              />
+            </div>
 
-          <button
-            type="button"
-            onClick={() => setVideoOpen(true)}
-            className="absolute bottom-8 right-4 flex w-[min(100%,280px)] items-center gap-3 rounded-xl border border-r8-border bg-r8-black/80 p-3 text-left backdrop-blur-md transition hover:border-r8-blue sm:right-8"
-          >
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-r8-blue text-white">
-              <Play className="h-4 w-4 fill-current" />
-            </span>
-            <span>
-              <span className="block text-xs uppercase tracking-[0.16em] text-r8-blue-light">Meet Your Coach</span>
-              <span className="block text-sm font-medium text-r8-white">Watch Rei&apos;s Introduction</span>
-              <span className="block text-xs text-r8-muted">1:32</span>
-            </span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              className="absolute bottom-4 right-2 z-10 flex w-[min(100%,260px)] items-center gap-3 rounded-xl border border-r8-border/80 bg-r8-black/70 p-3 text-left backdrop-blur-md transition hover:border-r8-blue sm:right-4"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-r8-blue text-white">
+                <Play className="h-4 w-4 fill-current" />
+              </span>
+              <span>
+                <span className="block text-xs uppercase tracking-[0.16em] text-r8-blue-light">Meet Your Coach</span>
+                <span className="block text-sm font-medium text-r8-white">Watch Rei&apos;s Introduction</span>
+                <span className="block text-xs text-r8-muted">1:32</span>
+              </span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -254,8 +261,17 @@ export default function HomePage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-              <ImagePlaceholder src="/images/rei/coaching-rei.jpg" alt="Rei coaching" label="Add Rei Photo" fill />
+            <div className="relative mx-auto aspect-[3/4] max-w-md">
+              <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-r8-blue/20 blur-3xl" />
+              <ImagePlaceholder
+                src="/images/rei/coaching-rei.png"
+                alt="Rei coaching"
+                label="Add Rei Photo"
+                fill
+                cutout
+                objectFit="contain"
+                className="object-contain object-bottom"
+              />
             </div>
           </FadeIn>
         </div>
@@ -421,8 +437,17 @@ export default function HomePage() {
       <section className="border-y border-r8-border bg-r8-black-2 py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <FadeIn>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-              <ImagePlaceholder src="/images/rei/about-rei.jpg" alt="Meet Rei" label="Add Rei Photo" fill />
+            <div className="relative mx-auto aspect-[3/4] max-w-md">
+              <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-r8-blue/20 blur-3xl" />
+              <ImagePlaceholder
+                src="/images/rei/about-rei.png"
+                alt="Meet Rei"
+                label="Add Rei Photo"
+                fill
+                cutout
+                objectFit="contain"
+                className="object-contain object-bottom"
+              />
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>

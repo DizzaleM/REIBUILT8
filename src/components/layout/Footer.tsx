@@ -93,6 +93,7 @@ export function Footer() {
           title="Company"
           links={[
             { href: "/about", label: "About" },
+            { href: "/community", label: "Community" },
             { href: "/contact", label: "Contact" },
             { href: "/assessment", label: "Assessment" },
             { href: "/login", label: "Login" },
