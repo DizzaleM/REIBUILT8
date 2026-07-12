@@ -7,7 +7,7 @@ Cinematic campaign heroes (July 2026 overhaul). Floating cutouts removed.
 | Program | Image |
 | --- | --- |
 | Build Strength | `/images/programs/build-strength.jpg` |
-| Fat Loss Accelerator | `/images/programs/fat-loss.jpg` |
+| Fat Loss Accelerator | `/images/programs/fat-loss.jpg` (branded scale) |
 | Athletic Performance | `/images/programs/athletic-performance.jpg` |
 | Home Training | `/images/programs/home-training.jpg` |
 | Mobility Reset | `/images/programs/mobility.jpg` |

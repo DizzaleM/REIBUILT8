@@ -674,10 +674,10 @@ products.find((x) => x.slug === "digital-strength-program")!.gallery = [
   "/images/programs/challenge.jpg",
   "/images/programs/athletic-performance.jpg",
 ];
-products.find((x) => x.slug === "digital-fat-loss-program")!.image = "/images/programs/fat-loss.jpg";
+products.find((x) => x.slug === "digital-fat-loss-program")!.image = "/images/programs/fat-loss.jpg?v=scale1";
 products.find((x) => x.slug === "digital-fat-loss-program")!.gallery = [
-  "/images/programs/fat-loss.jpg",
-  "/images/programs/fat-loss-accelerator.jpg",
+  "/images/programs/fat-loss.jpg?v=scale1",
+  "/images/programs/fat-loss-accelerator.jpg?v=scale1",
   "/images/programs/home-training.jpg?v=homegym1",
   "/images/programs/beginner.jpg",
 ];
