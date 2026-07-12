@@ -40,7 +40,7 @@ export const metadata: Metadata = {
       "Train with Rei through structured workout programs, live fitness classes, personal coaching, membership options and performance-focused resources.",
   },
   icons: {
-    icon: "/brand/reibuilt8-r8-mark.png",
+    icon: "/brand/reibuilt8-r8-mark.svg",
   },
 };
 

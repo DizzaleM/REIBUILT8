@@ -28,11 +28,11 @@ import { testimonials } from "@/data/testimonials";
 import { getFeaturedClass } from "@/data/classes";
 
 const trustItems = [
-  "On-demand workouts",
-  "Weekly live classes",
-  "Personal coaching",
-  "Nutrition support",
-  "Progress tracking",
+  "Workouts Anytime",
+  "Live Classes Weekly",
+  "Custom Nutrition",
+  "Personal Coaching",
+  "Track Progress",
 ];
 
 const paths = [
@@ -79,12 +79,24 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative min-h-[100svh] overflow-hidden bg-r8-black pt-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(8,107,255,0.18),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,70,199,0.12),transparent_45%)]" />
-        <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-10 px-4 pb-16 pt-8 sm:px-6 lg:grid-cols-2 lg:px-8 lg:pb-20">
-          <div className="relative z-10 max-w-xl">
+      {/* Hero — full-bleed cinematic layout aligned to brand mockup */}
+      <section className="relative min-h-[100svh] overflow-hidden bg-r8-black">
+        <div className="absolute inset-0">
+          <ImagePlaceholder
+            src="/images/rei/hero-rei.jpg"
+            alt="Rei — REIBUILT 8 coach"
+            label="Add Rei Photo"
+            fill
+            priority
+            className="object-cover object-[center_20%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-r8-black via-r8-black/85 to-r8-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-r8-black via-transparent to-r8-black/50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(10,132,255,0.22),transparent_55%)]" />
+        </div>
+
+        <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-r8-blue-light">
               Online Training. Real Structure. Real Results.
             </p>
@@ -92,54 +104,44 @@ export default function HomePage() {
               Train Different.
               <span className="mt-2 block text-r8-blue">Build Your Next Level.</span>
             </h1>
-            <p className="mt-6 text-base leading-relaxed text-r8-secondary sm:text-lg">
-              Structured workouts, live coaching, nutrition support and real accountability designed to help you build
-              lasting results.
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-r8-secondary sm:text-lg">
+              Custom training. Proven programs. Real support. Everything you need to become your best.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/assessment" size="lg">
                 Start Your Journey
               </Button>
               <Button href="/programs" variant="secondary" size="lg">
-                Browse Programs
+                <Play className="h-4 w-4" /> Browse Programs
               </Button>
             </div>
-            <ul className="mt-8 flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.14em] text-r8-muted">
-              {trustItems.map((item) => (
-                <li key={item} className="inline-flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-r8-blue-light" />
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="relative min-h-[420px] lg:min-h-[620px]">
-            <div className="hero-image-fade absolute inset-0">
-              <ImagePlaceholder
-                src="/images/rei/hero-rei.jpg"
-                alt="Rei coaching portrait placeholder"
-                label="Add Rei Photo"
-                fill
-                priority
-                className="object-cover object-top"
-              />
-            </div>
-            <button
-              type="button"
-              onClick={() => setVideoOpen(true)}
-              className="absolute bottom-6 right-4 z-10 flex w-[min(100%,280px)] items-center gap-3 rounded-xl border border-r8-border bg-r8-black/80 p-3 text-left backdrop-blur-md transition hover:border-r8-blue sm:right-0"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-r8-blue text-white">
-                <Play className="h-4 w-4 fill-current" />
-              </span>
-              <span>
-                <span className="block text-xs uppercase tracking-[0.16em] text-r8-blue-light">Meet Your Coach</span>
-                <span className="block text-sm font-medium text-r8-white">Watch Rei&apos;s Introduction</span>
-                <span className="block text-xs text-r8-muted">1:32</span>
-              </span>
-            </button>
-          </div>
+          <ul className="mt-14 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {trustItems.map((item) => (
+              <li
+                key={item}
+                className="rounded-lg border border-r8-border/80 bg-r8-black/50 px-3 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.12em] text-r8-secondary backdrop-blur-sm"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <button
+            type="button"
+            onClick={() => setVideoOpen(true)}
+            className="absolute bottom-8 right-4 flex w-[min(100%,280px)] items-center gap-3 rounded-xl border border-r8-border bg-r8-black/80 p-3 text-left backdrop-blur-md transition hover:border-r8-blue sm:right-8"
+          >
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-r8-blue text-white">
+              <Play className="h-4 w-4 fill-current" />
+            </span>
+            <span>
+              <span className="block text-xs uppercase tracking-[0.16em] text-r8-blue-light">Meet Your Coach</span>
+              <span className="block text-sm font-medium text-r8-white">Watch Rei&apos;s Introduction</span>
+              <span className="block text-xs text-r8-muted">1:32</span>
+            </span>
+          </button>
         </div>
       </section>
 
