@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --r8-black: #050608;
+  --r8-black-2: #090b0f;
+  --r8-charcoal: #10141a;
+  --r8-elevated: #151a22;
+  --r8-border: #242b36;
+  --r8-blue: #086bff;
+  --r8-blue-deep: #0046c7;
+  --r8-blue-light: #48a3ff;
+  --r8-white: #f7f9fc;
+  --r8-text-secondary: #a8b0bd;
+  --r8-text-muted: #737d8c;
+  --r8-success: #22c55e;
+  --r8-warning: #f5a524;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-r8-black: var(--r8-black);
+  --color-r8-black-2: var(--r8-black-2);
+  --color-r8-charcoal: var(--r8-charcoal);
+  --color-r8-elevated: var(--r8-elevated);
+  --color-r8-border: var(--r8-border);
+  --color-r8-blue: var(--r8-blue);
+  --color-r8-blue-deep: var(--r8-blue-deep);
+  --color-r8-blue-light: var(--r8-blue-light);
+  --color-r8-white: var(--r8-white);
+  --color-r8-secondary: var(--r8-text-secondary);
+  --color-r8-muted: var(--r8-text-muted);
+  --color-r8-success: var(--r8-success);
+  --color-r8-warning: var(--r8-warning);
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--r8-black);
+  color: var(--r8-white);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--r8-blue) 40%, transparent);
+  color: var(--r8-white);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--r8-blue-light);
+  outline-offset: 2px;
+}
+
+.font-display {
+  font-family: var(--font-oswald), Impact, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.bg-grid-subtle {
+  background-image:
+    linear-gradient(to right, rgba(36, 43, 54, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(36, 43, 54, 0.45) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.hero-image-fade {
+  mask-image: linear-gradient(90deg, transparent 0%, black 18%, black 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 18%, black 100%);
+}
+
+@media (max-width: 768px) {
+  .hero-image-fade {
+    mask-image: linear-gradient(180deg, transparent 0%, black 25%, black 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 25%, black 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
