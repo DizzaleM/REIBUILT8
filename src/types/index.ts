@@ -20,6 +20,7 @@ export interface Program {
   sampleWorkouts: { title: string; duration: string; focus: string }[];
   faqs: { question: string; answer: string }[];
   image: string;
+  imageAlt?: string;
   featured?: boolean;
   newest?: boolean;
   category: string;
@@ -105,6 +106,7 @@ export interface Testimonial {
   rating: number;
   verified: boolean;
   imageLabel: string;
+  image?: string;
 }
 
 export interface FaqItem {

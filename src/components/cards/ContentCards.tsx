@@ -139,11 +139,13 @@ export function TestimonialCard({ item }: { item: Testimonial }) {
   return (
     <article className="h-full rounded-xl border border-r8-border bg-r8-elevated p-6">
       <div className="flex items-center gap-4">
-        <ImagePlaceholder
-          alt={item.name}
-          label={item.imageLabel}
-          className="h-14 w-14 rounded-full"
-        />
+        <div className="relative h-14 w-14 overflow-hidden rounded-full border border-r8-border">
+          {item.image ? (
+            <ImagePlaceholder src={item.image} alt={`Portrait representing ${item.name}`} fill cutout objectFit="cover" label={item.imageLabel} />
+          ) : (
+            <ImagePlaceholder alt={item.name} label={item.imageLabel} className="h-14 w-14" />
+          )}
+        </div>
         <div>
           <p className="font-semibold text-r8-white">{item.name}</p>
           <p className="text-xs text-r8-muted">{item.program}</p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { TreatedPhoto } from "@/components/ui/TreatedPhoto";
 import { formatPrice } from "@/lib/utils";
 import type { Program } from "@/types";
 
@@ -12,17 +12,15 @@ export function ProgramCard({ program }: { program: Program }) {
   return (
     <motion.article
       whileHover={{ y: -4 }}
-      className="group flex h-full flex-col overflow-hidden rounded-xl border border-r8-border bg-r8-elevated"
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-r8-border bg-r8-elevated transition hover:border-r8-blue/50"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
-        <ImagePlaceholder
+        <TreatedPhoto
           src={program.image}
-          alt={program.title}
-          label="Add Program Photo"
-          fill
-          className="transition duration-500 group-hover:scale-105"
+          alt={program.imageAlt ?? program.title}
+          className="absolute inset-0 transition duration-500 group-hover:scale-105"
         />
-        <div className="absolute left-3 top-3">
+        <div className="absolute left-3 top-3 z-10">
           <Badge>{program.type}</Badge>
         </div>
       </div>
@@ -74,24 +72,25 @@ export function ProductCard({
   onQuickView?: () => void;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-r8-border bg-r8-elevated">
-      <Link href={`/shop/${product.slug}`} className="relative aspect-square overflow-hidden">
-        <ImagePlaceholder
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-r8-border bg-r8-elevated transition hover:border-r8-blue/40">
+      <Link href={`/shop/${product.slug}`} className="relative aspect-square overflow-hidden bg-r8-black">
+        <TreatedPhoto
           src={product.image}
           alt={product.name}
-          label="Add Product Photo"
-          fill
-          className="transition duration-500 group-hover:scale-105"
+          className="absolute inset-0 transition duration-500 group-hover:scale-105"
         />
         {product.badges?.[0] ? (
-          <div className="absolute left-3 top-3">
+          <div className="absolute left-3 top-3 z-10">
             <Badge>{product.badges[0]}</Badge>
           </div>
         ) : null}
       </Link>
       <div className="flex flex-1 flex-col p-4">
         <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">{product.category}</p>
-        <Link href={`/shop/${product.slug}`} className="mt-1 font-display text-xl uppercase text-r8-white hover:text-r8-blue-light">
+        <Link
+          href={`/shop/${product.slug}`}
+          className="mt-1 font-display text-xl uppercase text-r8-white hover:text-r8-blue-light"
+        >
           {product.name}
         </Link>
         <p className="mt-2 text-r8-blue-light">{formatPrice(product.price)}</p>
@@ -100,9 +99,11 @@ export function ProductCard({
           <Button className="flex-1" size="sm" onClick={onAdd}>
             Add to Cart
           </Button>
-          <Button variant="secondary" size="sm" onClick={onQuickView}>
-            Quick View
-          </Button>
+          {onQuickView ? (
+            <Button variant="secondary" size="sm" onClick={onQuickView}>
+              Quick View
+            </Button>
+          ) : null}
         </div>
       </div>
     </article>

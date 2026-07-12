@@ -33,6 +33,7 @@ export const assessmentQuestions: AssessmentQuestion[] = [
       { value: "strength", label: "Get stronger and more capable in the gym" },
       { value: "fat-loss", label: "Drop body fat and tighten things up" },
       { value: "performance", label: "Move better, feel more athletic" },
+      { value: "combat", label: "Build boxing / combat skills and fight conditioning" },
       { value: "habits", label: "Stop restarting and finally stay consistent" },
       { value: "home", label: "Train effectively at home with limited equipment" },
     ],

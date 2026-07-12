@@ -13,10 +13,13 @@ import { buildRecommendations } from "@/lib/programRecommendations";
 import { analytics } from "@/lib/analytics";
 import { getCoachTake } from "@/services/aiCoach";
 import { getProgramBySlug } from "@/data/programs";
+import { combatPrograms } from "@/data/combat";
 import { getMembershipBySlug } from "@/data/memberships";
 import { useUi } from "@/components/providers/UiProvider";
 import type { AssessmentAnswer, AssessmentLead, AssessmentResult } from "@/types";
-import { cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
+import { TreatedPhoto } from "@/components/ui/TreatedPhoto";
+import { Badge } from "@/components/ui/Badge";
 
 type Stage = "intro" | "questions" | "lead" | "results";
 
@@ -90,6 +93,9 @@ export default function AssessmentPage() {
   };
 
   const program = result ? getProgramBySlug(result.recommendedProgramSlug) : null;
+  const combatProgram = result
+    ? combatPrograms.find((p) => p.slug === result.recommendedProgramSlug)
+    : null;
   const membership = result ? getMembershipBySlug(result.recommendedMembershipSlug) : null;
 
   return (
@@ -325,6 +331,26 @@ export default function AssessmentPage() {
                   <div>
                     <h3 className="mb-4 font-display text-2xl uppercase text-r8-white">Recommended Program</h3>
                     <ProgramCard program={program} />
+                  </div>
+                ) : null}
+
+                {combatProgram && !program ? (
+                  <div>
+                    <h3 className="mb-4 font-display text-2xl uppercase text-r8-white">Recommended Combat Program</h3>
+                    <article className="overflow-hidden rounded-xl border border-r8-border bg-r8-elevated">
+                      <div className="relative aspect-[16/10]">
+                        <TreatedPhoto src={combatProgram.image} alt={combatProgram.imageAlt} />
+                      </div>
+                      <div className="p-5">
+                        <Badge>{combatProgram.difficulty}</Badge>
+                        <h4 className="mt-3 font-display text-2xl uppercase text-r8-white">{combatProgram.title}</h4>
+                        <p className="mt-2 text-sm text-r8-secondary">{combatProgram.summary}</p>
+                        <p className="mt-3 text-r8-blue-light">{formatPrice(combatProgram.price)}</p>
+                        <Button href="/combat#programs" className="mt-4">
+                          View Combat Programs
+                        </Button>
+                      </div>
+                    </article>
                   </div>
                 ) : null}
 

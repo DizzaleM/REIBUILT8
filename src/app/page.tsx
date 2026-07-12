@@ -3,21 +3,22 @@
 import Link from "next/link";
 import { useState } from "react";
 import {
-  Activity,
   CalendarDays,
   Check,
   Dumbbell,
-  Play,
   ShoppingBag,
+  Swords,
   UserRound,
   Users,
   Video,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { HomeHero } from "@/components/home/HomeHero";
+import { TreatedPhoto } from "@/components/ui/TreatedPhoto";
 import { ProgramCard } from "@/components/cards/ProgramCard";
 import { PricingCard, TestimonialCard } from "@/components/cards/ContentCards";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
@@ -26,14 +27,6 @@ import { programs } from "@/data/programs";
 import { membershipPlans } from "@/data/memberships";
 import { testimonials } from "@/data/testimonials";
 import { getFeaturedClass } from "@/data/classes";
-
-const trustItems = [
-  "Workouts Anytime",
-  "Live Classes Weekly",
-  "Custom Nutrition",
-  "Personal Coaching",
-  "Track Progress",
-];
 
 const paths = [
   {
@@ -62,97 +55,60 @@ const paths = [
   },
 ];
 
+const performanceCards = [
+  {
+    title: "Strength Training",
+    description: "Build lasting strength with progressive, structured lifting programs.",
+    href: "/programs/build-strength",
+    image: "/images/programs/build-strength.jpg",
+    alt: "Rei locking out a heavy deadlift",
+  },
+  {
+    title: "Boxing",
+    description: "Develop speed, power, and striking skill through structured boxing work.",
+    href: "/combat",
+    image: "/images/programs/combat-heavy-bag.jpg",
+    alt: "Rei training on a heavy bag",
+  },
+  {
+    title: "Kickboxing",
+    description: "Conditioning and striking fundamentals for athletic confidence.",
+    href: "/combat#categories",
+    image: "/images/combat/boxing-2.jpg",
+    alt: "Athlete training striking fundamentals",
+  },
+  {
+    title: "Athletic Conditioning",
+    description: "Engine work that supports strength, combat, and real-life performance.",
+    href: "/programs/athletic-performance",
+    image: "/images/programs/athletic-performance.jpg",
+    alt: "Rei showing athletic physique after training",
+  },
+];
+
 const shopCategories = [
-  { name: "Apparel", href: "/shop?category=Apparel" },
-  { name: "Supplements", href: "/shop?category=Supplements" },
-  { name: "Meal Prep", href: "/meal-prep" },
-  { name: "Digital Programs", href: "/shop?category=Digital%20Programs" },
-  { name: "Accessories", href: "/shop?category=Accessories" },
-  { name: "Gift Cards", href: "/shop?category=Gift%20Cards" },
+  { name: "Apparel", href: "/shop?category=Apparel", image: "/images/products/r8-hoodie.jpg" },
+  { name: "Supplements", href: "/shop?category=Supplements", image: "/images/products/r8-supplement.jpg" },
+  { name: "Meal Prep", href: "/meal-prep", image: "/images/products/r8-meal-prep.jpg" },
+  {
+    name: "Digital Programs",
+    href: "/shop?category=Digital%20Programs",
+    image: "/images/programs/build-strength.jpg",
+  },
+  { name: "Accessories", href: "/shop?category=Accessories", image: "/images/products/r8-shaker.jpg" },
+  { name: "Gift Cards", href: "/shop?category=Gift%20Cards", image: "/images/products/r8-hat.jpg" },
 ];
 
 export default function HomePage() {
-  const { setVideoOpen, setReserveOpen, openCheckout } = useUi();
+  const { setReserveOpen, openCheckout } = useUi();
   const [annual, setAnnual] = useState(false);
   const featured = programs.filter((p) => p.featured).slice(0, 4);
   const nextClass = getFeaturedClass();
 
   return (
     <div>
-      {/* Hero — mockup layout: copy left, cutout subject right on pure black */}
-      <section className="relative min-h-[100svh] overflow-hidden bg-r8-black">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_45%,rgba(10,132,255,0.28),transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,81,204,0.12),transparent_45%)]" />
+      <HomeHero />
 
-        <div className="relative mx-auto grid min-h-[100svh] max-w-[1400px] items-center gap-8 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-10">
-          <div className="relative z-10 max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-r8-blue-light">
-              Online Training. Real Structure. Real Results.
-            </p>
-            <h1 className="mt-5 font-display text-5xl font-bold uppercase leading-[0.9] tracking-wide text-r8-white sm:text-6xl lg:text-7xl">
-              Train Different.
-              <span className="mt-2 block text-r8-blue">Build Your Next Level.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-r8-secondary sm:text-lg">
-              Custom training. Proven programs. Real support. Everything you need to become your best.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/assessment" size="lg">
-                Start Your Journey
-              </Button>
-              <Button href="/programs" variant="secondary" size="lg" className="border-white/40">
-                <Play className="h-4 w-4" /> Browse Programs
-              </Button>
-            </div>
-
-            <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
-              {trustItems.map((item) => (
-                <li key={item} className="text-center sm:text-left">
-                  <span className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-r8-blue/40 text-r8-blue-light sm:mx-0">
-                    <Activity className="h-4 w-4" />
-                  </span>
-                  <span className="block text-[11px] font-semibold uppercase tracking-[0.12em] text-r8-secondary">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="relative mx-auto flex min-h-[420px] w-full max-w-lg items-end justify-center lg:min-h-[640px] lg:max-w-none">
-            <div className="pointer-events-none absolute bottom-[8%] left-1/2 h-[55%] w-[70%] -translate-x-1/2 rounded-full bg-r8-blue/25 blur-3xl" />
-            <div className="relative h-full w-full max-h-[78vh]">
-              <ImagePlaceholder
-                src="/images/rei/hero-rei.png"
-                alt="Rei — REIBUILT 8 coach"
-                label="Add Rei Photo"
-                fill
-                priority
-                cutout
-                objectFit="contain"
-                className="object-contain object-bottom drop-shadow-[0_20px_60px_rgba(10,132,255,0.25)]"
-              />
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setVideoOpen(true)}
-              className="absolute bottom-4 right-2 z-10 flex w-[min(100%,260px)] items-center gap-3 rounded-xl border border-r8-border/80 bg-r8-black/70 p-3 text-left backdrop-blur-md transition hover:border-r8-blue sm:right-4"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-r8-blue text-white">
-                <Play className="h-4 w-4 fill-current" />
-              </span>
-              <span>
-                <span className="block text-xs uppercase tracking-[0.16em] text-r8-blue-light">Meet Your Coach</span>
-                <span className="block text-sm font-medium text-r8-white">Watch Rei&apos;s Introduction</span>
-                <span className="block text-xs text-r8-muted">1:32</span>
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick paths */}
       <section className="border-t border-r8-border bg-r8-black-2 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
@@ -178,7 +134,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured programs */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
@@ -197,13 +152,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Live class */}
       <section className="border-y border-r8-border bg-r8-black-2 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <SectionHeading
+              eyebrow="Strength + Combat + Conditioning"
+              title="Train for Performance"
+              description="REIBUILT 8 combines strength training, combat performance, and lifestyle coaching into one premium platform."
+              align="center"
+            />
+          </FadeIn>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {performanceCards.map((card) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                className="group relative min-h-72 overflow-hidden rounded-xl border border-r8-border"
+              >
+                <TreatedPhoto src={card.image} alt={card.alt} className="absolute inset-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-r8-black via-r8-black/40 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="font-display text-2xl uppercase text-r8-white">{card.title}</h3>
+                  <p className="mt-2 text-sm text-r8-secondary">{card.description}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-r8-blue-light">
+                    {card.title === "Boxing" || card.title === "Kickboxing" ? (
+                      <Swords className="h-3.5 w-3.5" />
+                    ) : (
+                      <Zap className="h-3.5 w-3.5" />
+                    )}
+                    Explore
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <FadeIn>
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[16/11] lg:aspect-[4/5]">
-              <ImagePlaceholder src="/images/rei/live-class.jpg" alt="Live training session" label="Add Class Photo" fill />
-              <div className="absolute left-4 top-4">
+              <TreatedPhoto src="/images/live/live-class-1.jpg" alt="Athletes training in a live coaching session" />
+              <div className="absolute left-4 top-4 z-10">
                 <Badge>Live</Badge>
               </div>
             </div>
@@ -216,7 +207,9 @@ export default function HomePage() {
                 <CalendarDays className="h-4 w-4 text-r8-blue-light" />
                 {nextClass.day} · {nextClass.time} {nextClass.timezone}
               </li>
-              <li>{nextClass.durationMinutes} minutes · {nextClass.level}</li>
+              <li>
+                {nextClass.durationMinutes} minutes · {nextClass.level}
+              </li>
               <li>Equipment: {nextClass.equipment}</li>
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -229,8 +222,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Coaching */}
-      <section className="py-20">
+      <section className="border-y border-r8-border bg-r8-black-2 py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <FadeIn>
             <SectionHeading title="Coaching Built Around You" />
@@ -263,22 +255,18 @@ export default function HomePage() {
           <FadeIn delay={0.08}>
             <div className="relative mx-auto aspect-[3/4] max-w-md">
               <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-r8-blue/20 blur-3xl" />
-              <ImagePlaceholder
-                src="/images/rei/coaching-rei.png"
-                alt="Rei coaching"
-                label="Add Rei Photo"
-                fill
-                cutout
-                objectFit="contain"
-                className="object-contain object-bottom"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/rei/IMG_4303.png"
+                alt="Rei, REIBUILT 8 coach"
+                className="relative h-full w-full object-contain object-bottom"
               />
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Shop categories */}
-      <section className="border-y border-r8-border bg-r8-black-2 py-20">
+      <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <SectionHeading title="Shop REIBUILT 8" align="center" />
@@ -288,12 +276,14 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="group relative flex min-h-40 items-end overflow-hidden rounded-xl border border-r8-border bg-r8-elevated p-6 transition hover:border-r8-blue"
+                className="group relative flex min-h-44 items-end overflow-hidden rounded-xl border border-r8-border bg-r8-elevated p-6 transition hover:border-r8-blue"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-r8-black via-r8-black/40 to-transparent" />
-                <div className="absolute inset-0 opacity-40 transition group-hover:opacity-60">
-                  <ImagePlaceholder alt={cat.name} label={cat.name} fill />
-                </div>
+                <TreatedPhoto
+                  src={cat.image}
+                  alt={`${cat.name} category`}
+                  className="absolute inset-0 opacity-70 transition group-hover:opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-r8-black via-r8-black/50 to-transparent" />
                 <div className="relative z-10 flex items-center gap-3">
                   <ShoppingBag className="h-5 w-5 text-r8-blue-light" />
                   <span className="font-display text-2xl uppercase text-r8-white">{cat.name}</span>
@@ -304,8 +294,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Membership */}
-      <section className="py-20">
+      <section className="border-y border-r8-border bg-r8-black-2 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <SectionHeading title="Choose Your Membership" align="center" />
@@ -349,64 +338,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Dashboard preview */}
-      <section className="border-y border-r8-border bg-r8-black-2 py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeading
-              title="Train Anytime, Anywhere"
-              description="A preview of the member experience — workouts, progress, and live sessions in one place."
-              align="center"
-            />
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="mx-auto mt-10 max-w-5xl rounded-2xl border border-r8-border bg-r8-charcoal p-4 sm:p-6">
-              <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-                <div className="rounded-xl border border-r8-border bg-r8-elevated p-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">Today&apos;s Workout</p>
-                      <h3 className="mt-1 font-display text-2xl uppercase text-r8-white">Lower Strength A</h3>
-                    </div>
-                    <Button size="sm">Continue</Button>
-                  </div>
-                  <div className="relative mt-4 aspect-video overflow-hidden rounded-lg">
-                    <ImagePlaceholder src="/images/rei/workout-preview-1.jpg" alt="Workout preview" label="Add Workout Photo" fill />
-                  </div>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  <StatCard label="Workouts Completed" value="18" />
-                  <StatCard label="Calories Burned" value="6,420" />
-                  <StatCard label="Current Streak" value="12 days" />
-                  <StatCard label="Program Progress" value="62%" />
-                </div>
-              </div>
-              <div className="mt-4 grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl border border-r8-border bg-r8-elevated p-4">
-                  <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">Weekly Activity</p>
-                  <div className="mt-4 flex h-28 items-end gap-2">
-                    {[40, 65, 50, 80, 70, 90, 55].map((h, i) => (
-                      <div key={i} className="flex-1 rounded-t bg-r8-blue/80" style={{ height: `${h}%` }} />
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-xl border border-r8-border bg-r8-elevated p-4">
-                  <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">Upcoming Live Class</p>
-                  <p className="mt-3 font-display text-xl uppercase text-r8-white">{nextClass.title}</p>
-                  <p className="mt-1 text-sm text-r8-secondary">
-                    {nextClass.day} · {nextClass.time} {nextClass.timezone}
-                  </p>
-                  <Button href="/live" variant="secondary" size="sm" className="mt-4">
-                    View Schedule
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Testimonials */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
@@ -417,57 +348,41 @@ export default function HomePage() {
               <TestimonialCard key={item.id} item={item} />
             ))}
           </div>
-          <div className="mt-10 rounded-xl border border-dashed border-r8-border bg-r8-charcoal p-6">
-            <p className="text-xs uppercase tracking-[0.18em] text-r8-warning">Sample Content</p>
-            <p className="mt-2 text-sm text-r8-secondary">
-              Transformation gallery placeholders — replace with approved before-and-after photos before launch.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {["Before / After 1", "Before / After 2", "Before / After 3"].map((label) => (
-                <div key={label} className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                  <ImagePlaceholder alt={label} label={label} fill />
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="mt-6 text-center text-xs text-r8-muted">
+            Sample content — portraits are stock photography until verified member photos are approved.
+          </p>
         </div>
       </section>
 
-      {/* About Rei */}
       <section className="border-y border-r8-border bg-r8-black-2 py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <FadeIn>
             <div className="relative mx-auto aspect-[3/4] max-w-md">
               <div className="pointer-events-none absolute bottom-[10%] left-1/2 h-1/2 w-3/4 -translate-x-1/2 rounded-full bg-r8-blue/20 blur-3xl" />
-              <ImagePlaceholder
-                src="/images/rei/about-rei.png"
-                alt="Meet Rei"
-                label="Add Rei Photo"
-                fill
-                cutout
-                objectFit="contain"
-                className="object-contain object-bottom"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/programs/athletic-performance.png"
+                alt="Rei showing athletic back development"
+                className="relative h-full w-full object-contain object-bottom"
               />
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
             <SectionHeading title="Meet Rei" />
             <p className="mt-4 text-r8-secondary">
-              Rei created REIBUILT 8 to give people more than random workouts. His approach combines structure,
-              accountability and practical coaching so members can build strength, improve confidence and create habits
-              that last.
+              Rei created REIBUILT 8 to deliver more than random workouts — strength training, combat performance, and
+              practical coaching so members can build confidence and habits that last.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/about">Meet Your Coach</Button>
-              <Button href="/assessment" variant="secondary">
-                Start Training
+              <Button href="/combat" variant="secondary">
+                Explore Combat
               </Button>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Email signup */}
       <section className="py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
@@ -483,11 +398,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
       <section className="border-t border-r8-border bg-[linear-gradient(180deg,#090B0F_0%,#0B1A33_100%)] py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Activity className="mx-auto h-8 w-8 text-r8-blue-light" />
-          <h2 className="mt-6 font-display text-4xl font-bold uppercase leading-none text-r8-white sm:text-5xl">
+          <h2 className="font-display text-4xl font-bold uppercase leading-none text-r8-white sm:text-5xl">
             Ready to Build Your Next Level?
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -500,15 +413,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
-  );
-}
-
-function StatCard({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-xl border border-r8-border bg-r8-elevated p-4">
-      <p className="text-xs uppercase tracking-[0.16em] text-r8-muted">{label}</p>
-      <p className="mt-2 font-display text-3xl text-r8-white">{value}</p>
     </div>
   );
 }

@@ -14,10 +14,15 @@ export function buildRecommendations(answers: AssessmentAnswer[]): AssessmentRes
   if (goal === "strength") recommendedProgramSlug = "build-strength";
   if (goal === "fat-loss") recommendedProgramSlug = "fat-loss-accelerator";
   if (goal === "performance") recommendedProgramSlug = "athletic-performance";
+  if (goal === "combat") recommendedProgramSlug = "30-day-boxing-fundamentals";
   if (goal === "home") recommendedProgramSlug = "home-training";
   if (goal === "habits") recommendedProgramSlug = "28-day-consistency-challenge";
-  if (level === "beginner" && goal !== "home") recommendedProgramSlug = "home-training";
+  if (level === "beginner" && goal !== "home" && goal !== "combat") recommendedProgramSlug = "home-training";
+  if (level === "beginner" && goal === "combat") recommendedProgramSlug = "30-day-boxing-fundamentals";
+  if (level === "intermediate" && goal === "combat") recommendedProgramSlug = "heavy-bag-blueprint";
+  if (level === "advanced" && goal === "combat") recommendedProgramSlug = "power-punch-system";
   if (scores.movement < 45 && goal === "performance") recommendedProgramSlug = "mobility-reset";
+  if (challenge === "motivation" && goal === "combat") recommendedProgramSlug = "fight-conditioning-8-week";
 
   let recommendedMembershipSlug: "foundation" | "built" | "elite" = "built";
   if (support === "self" || scores.overall < 45) recommendedMembershipSlug = "foundation";

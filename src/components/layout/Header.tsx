@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 const headerLinks = [
   { href: "/", label: "Home" },
   { href: "/programs", label: "Programs" },
+  { href: "/combat", label: "Combat" },
   { href: "/live", label: "Live" },
   { href: "/shop", label: "Shop" },
   { href: "/meal-prep", label: "Meal Prep" },
