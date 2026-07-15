@@ -282,7 +282,7 @@ export function HomeHero() {
       <div className="hero-stage relative z-10 mx-auto grid min-h-[100svh] w-full max-w-[1500px] grid-cols-1 px-4 pb-28 pt-28 will-change-transform sm:px-6 sm:pt-32 lg:min-h-[920px] lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)] lg:items-center lg:gap-10 lg:px-12 lg:pb-16 lg:pt-28">
         <div className="relative z-20 flex flex-col justify-center">
           <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:gap-10 lg:gap-12">
-            <div className="w-[clamp(200px,42vw,280px)] shrink-0 lg:w-[clamp(240px,18vw,290px)]">
+            <div className="w-[clamp(200px,42vw,280px)] shrink-0 md:w-[23.86vw] lg:w-[clamp(221px,17.3vw,334px)]">
               <div className="relative">
                 <div
                   className="hero-aura-outer pointer-events-none absolute inset-[-65%] rounded-[44%] bg-[conic-gradient(from_20deg,transparent_0deg,rgba(93,219,255,0.45)_42deg,transparent_78deg,rgba(255,191,79,0.32)_128deg,transparent_176deg,rgba(255,255,255,0.48)_232deg,transparent_292deg)] opacity-0 blur-2xl will-change-[transform,opacity]"
